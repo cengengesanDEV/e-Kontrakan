@@ -1,0 +1,88 @@
+.navbar_container {
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar_center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+
+}
+
+.navbar_center > li {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  color: #1A1A1A;
+}
+
+.li_home {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.li_kontrakan {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.nav_left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nav_left > img {
+  width: 90px;
+  height: 50px;  
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 20px;;
+}
+
+.nav_left > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+  color: #1A1A1A;
+  
+}
+
+.button_login {
+  margin: 0 5px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #1A1A1A;
+  border-radius: 10px;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  color: white;
+}
+
+.button_register {
+  margin: 0 5px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #DADADA;
+  border-radius: 10px;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  color: #1A1A1A;
+
+}

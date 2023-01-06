@@ -1,0 +1,44 @@
+.container_footer {
+  padding: 10px 50px;
+  background-color: #1a1a1a;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.copyright {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: white;
+}
+
+.pengaduan {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.phone {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: white;
+}
+
+.email {
+  padding-left: 20px;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: white;
+}
