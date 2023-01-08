@@ -1,0 +1,93 @@
+/* list kontrakan */
+.content_list_kontrakan {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.list_no {
+  padding-left: 10px;
+  padding-right: 30px;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #1a1a1a;
+}
+
+
+.content_list_kontrakan > img {
+  width: 80px;
+  height: 80px;
+  padding: 2px;
+  box-shadow: 5px -5px #1a1a1a;
+  border-radius: 10px;
+  background-color: #DADADA;
+}
+
+.list_name_kontrakan {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: start;
+  height: 80px;
+  width: 150px;
+  overflow-x: hidden;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 21px;
+  color: #1a1a1a;
+}
+
+.list_tipe {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: start;
+  height: 80px;
+  width: 150px;
+  overflow-x: hidden;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 21px;
+  color: #1a1a1a;
+}
+
+.list_location {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: start;
+  height: 80px;
+  width: 120px;
+  overflow-x: hidden;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 21px;
+  color: #1a1a1a;
+}
+
+.list_action {
+  margin-left: 30px;
+  border: none;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 21px;
+  color: white;
+  padding: 10px 20px;
+}

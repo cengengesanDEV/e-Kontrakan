@@ -1,0 +1,369 @@
+.container_left_right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container_left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px 20px;
+  width: 30%;
+}
+
+
+/* category */
+.container_bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  height: 500px;
+}
+
+.role_title {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 21px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+}
+
+.dashboard > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.dashboard > i {
+  font-size: 18px;
+  color: #FFF;
+}
+
+.dashboard_active {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+  border-bottom: 2px solid white;
+}
+
+.dashboard_active > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.dashboard_active > i {
+  font-size: 18px;
+  color: #FFF;
+}
+
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+}
+
+.profile > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 22px;
+  cursor: pointer;
+}
+
+.profile > i {
+  font-size: 20px;
+  color: #FFF;
+}
+
+.profile_active {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+  border-bottom: 2px solid white;
+}
+
+.profile_active > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.profile_active > i {
+  font-size: 20px;
+  color: #FFF;
+}
+
+
+.kontrakan {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+}
+
+.kontrakan > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.kontrakan > i {
+  font-size: 18px;
+  color: #FFF;
+}
+
+
+.kontrakan_active {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+  border-bottom: 2px solid white;
+}
+
+.kontrakan_active > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.kontrakan_active > i {
+  font-size: 18px;
+  color: #FFF;
+}
+
+.pemesanan {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+}
+
+.pemesanan > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.pemesanan > i {
+  font-size: 18px;
+  color: #FFF;
+}
+
+
+.pemesanan_active {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+  border-bottom: 2px solid white;
+}
+
+.pemesanan_active > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.pemesanan_active > i {
+  font-size: 18px;
+  color: #FFF;
+}
+
+.history {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+}
+
+.history > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.history > i {
+  font-size: 18px;
+  color: #FFF;
+}
+
+.history_active {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+  border-bottom: 2px solid white;
+}
+
+.history_active > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.history_active > i {
+  font-size: 18px;
+  color: #FFF;
+}
+
+.logout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+}
+
+.logout > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.logout > i {
+  font-size: 18px;
+  color: #FFF;
+}
+
+.logout_active {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: none;
+  background-color: #1a1a1a;
+  padding-top: 15px;
+  border-bottom: 2px solid white;
+}
+
+.logout_active > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.logout_active > i {
+  font-size: 18px;
+  color: #FFF;
+}

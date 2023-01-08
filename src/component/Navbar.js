@@ -11,6 +11,7 @@ function Navbar() {
   const toLogin = () => navigate('/login')
   const toRegister = () => navigate('/register')
   const toBeranda = () => navigate('/')
+  const toKontrakan = () => navigate ('kontrakan')
 
   return (
     <div className='container-fluid'>
@@ -21,7 +22,9 @@ function Navbar() {
         </div>
         <div className={css.navbar_center}>
           <li className={css.li_home} onClick={toBeranda}>Beranda</li>
-          <li className={css.li_kontrakan}>Kontrakan</li>
+          <li className={css.li_kontrakan} onClick={toKontrakan}>Kontrakan</li>          
+          <li className={css.li_kontrakan}>Contact US</li>          
+          <li className={css.li_kontrakan}>About</li>
         </div>
         <div>
           <button className={css.button_login} onClick={toLogin} >Login</button>
