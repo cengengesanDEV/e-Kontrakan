@@ -12,7 +12,9 @@ function ListkontrakanOwner() {
         <p className={css.list_name_kontrakan}>Room Melati Jakarta Timur</p>
         <p className={css.list_tipe}>Melati-002</p>
         <p className={css.list_location}>Jakarta Utara</p>
-        <button className={css.list_action}>Klik to detail kontrakan</button>
+        <button className={css.list_action}>Detail</button>
+        <button className={css.edit_kontrakan}><i className="fa-solid fa-pen-to-square text-dark"></i></button>
+        <button className={css.trash}><i className="fa-solid fa-trash"></i></button>
     </div>
           
     </>
