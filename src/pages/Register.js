@@ -17,8 +17,9 @@ import Footer from "../component/Footer";
 import { Icon } from "react-icons-kit";
 import { eye } from "react-icons-kit/feather/eye";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
+import { RegisterAccount } from '../utils/axios';
 
 function Register() {
 
@@ -28,7 +29,7 @@ function Register() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [role, setRole] = useState('')
-  const [loading, setLoading] = useState('false')
+  const [loading, setLoading] = useState(false)
 
   const showPassword = () => {
     if (type === "password") {
@@ -56,15 +57,31 @@ function Register() {
   }
 
 
-  const registerData = () => {
-    setLoading(true)
-    if(!email || !password || !phoneNumber || !role) return (
-      toast.error("Data register can't be empty", {
+  const registerData = async () => {
+    try {
+      setLoading(true)
+      if(!email || !password || !phoneNumber || !role) return (
+        toast.error("Data register can't be empty", {
+          position: toast.POSITION.TOP_RIGHT,
+        }),setLoading(false)
+      )
+      const response = await RegisterAccount({
+        email: email,
+        passwords : password,
+        phone_number : phoneNumber,
+        role : role
+      })
+      toast.success(response.data.msg, {
+          position: toast.POSITION.TOP_RIGHT,
+      })
+      Navigate("/login")
+      setLoading(false)
+    } catch (error) {
+      toast.error(error.response.data.msg, {
         position: toast.POSITION.TOP_RIGHT,
-      }),setLoading(false)
-    )
-    console.log("ssd")
-    // axios taro disini
+    })
+      setLoading(false)
+    }
   }
 
 

@@ -16,7 +16,7 @@ function Navbar() {
   return (
     <div className='container-fluid'>
       <div className={css.navbar_container}>
-        <div className={css.nav_left}>
+        <div className={css.nav_left} onClick={toBeranda}>
           <img src={logo} alt='Logo-kontrakan' />
           <p>House Privilege</p>
         </div>

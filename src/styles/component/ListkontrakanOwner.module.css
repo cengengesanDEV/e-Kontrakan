@@ -79,7 +79,7 @@
 }
 
 .list_action {
-  margin-left: 30px;
+  margin-left: 10px;
   border: none;
   background-color: #1a1a1a;
   border-radius: 10px;
@@ -90,4 +90,34 @@
   line-height: 21px;
   color: white;
   padding: 10px 20px;
+}
+
+
+.edit_kontrakan {
+  margin-left: 10px;
+  border: none;
+  background-color: #DADADA;
+  border-radius: 10px;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 21px;
+  color: white;
+  padding: 10px 15px;
+}
+
+
+.trash {
+  margin-left: 10px;
+  border: none;
+  background-color: #df4759;
+  border-radius: 10px;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 21px;
+  color: white;
+  padding: 10px 15px;
 }
