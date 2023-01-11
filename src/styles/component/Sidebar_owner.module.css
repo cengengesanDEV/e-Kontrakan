@@ -321,8 +321,9 @@
   align-items: center;
   cursor: pointer;
   border: none;
-  background-color: #1a1a1a;
-  padding-top: 15px;
+  background-color: #EAEAEA;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .logout > p {
@@ -330,14 +331,14 @@
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  color: #FFF;
+  color: #1a1a1a;
   padding-left: 20px;
   cursor: pointer;
 }
 
 .logout > i {
   font-size: 18px;
-  color: #FFF;
+  color: #1a1a1a;
 }
 
 .logout_active {

@@ -14,7 +14,7 @@ function DatakontrakanOwner() {
         <div className="container-fluid">
           <div className={css.container_left_right}>
             {/* container left */}
-            <Sidebarowner />
+            <Sidebarowner page='datakontrakanowner' />
             {/* container right */}
             <div className={`container-fluid ${css.container_right}`}>    
               <div className={css.form_kontrakan}>

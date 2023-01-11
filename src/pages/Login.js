@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -17,10 +18,18 @@ import { eyeOff } from "react-icons-kit/feather/eyeOff";
 
 // import css
 import css from "../styles/page/Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 
+// import support implementation
+import { LoginAccount } from "../utils/axios";
+import authAction from "../redux/actions/auth";
+
+
 function Login() {
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
@@ -38,15 +47,57 @@ function Login() {
     }
   };
 
-  const LoginData = () => {
-    setLoading(true)
-    if(!email || !password) return (
-      toast.error("Data login can't be empty", {
-        position: toast.POSITION.TOP_RIGHT,
-      }),setLoading(false)
-    )
-    console.log("ssd")
-    // axios taro disini
+  const valueEmail = (e) => {
+    setEmail(e.target.value)
+  }
+  const valuePassword = (e) => {
+    setPassword(e.target.value)    
+  }
+
+  const LoginData = async () => {
+    try {
+      setLoading(true)
+      if(!email || !password) return (
+        toast.error("Data login can't be empty", {
+          position: toast.POSITION.TOP_RIGHT,
+        }),setLoading(false)
+      )
+      const response = await LoginAccount({email: email, passwords: password})
+      console.log(response.data.data)
+      localStorage.setItem('token', response.data.data.token)
+      const getToken = response.data.data.token
+      await dispatch(authAction.profileThunk(getToken,
+        () => {
+          if(response.data.data.role === 'admin') {
+            toast.success("Login Success", {
+              position: toast.POSITION.TOP_RIGHT,
+            })
+            setTimeout(() => {
+              navigate('/dashboardowner')
+            }, 2000);            
+          }else if(response.data.data.role === 'owner'){
+            toast.success("Login Success", {
+              position: toast.POSITION.TOP_RIGHT,
+            })
+            setTimeout(() => {
+              navigate('/dashboardowner')
+            }, 2000);            
+          } else if(response.data.data.role === 'customer'){
+            toast.success("Login Success", {
+              position: toast.POSITION.TOP_RIGHT,
+            })
+            setTimeout(() => {
+              navigate('/')
+            }, 2000);            
+          }
+        }))
+      
+      // navigate('/')
+    } catch (error) {
+      setLoading(false)
+      console.log(error)
+    }
+    
   }
 
 
@@ -71,12 +122,12 @@ function Login() {
               </div>
               <div className={css.input_login_email}>
                 <label htmlFor="">Email</label>
-                <input type="text" name="" id="" placeholder="please input email address" />
+                <input type="text" value={email} placeholder="please input email address" onChange={valueEmail} />
               </div>
               <div className={css.input_login_password}>
                 <label htmlFor="">Password</label>
                 <div className={css.show_eye} onClick={showPassword}>
-                  <input type={type} name="" id="" placeholder="please input password" />
+                  <input type={type} value={password} placeholder="please input password" onChange={valuePassword} />
                   <Icon icon={icon} className="ms-2 my-2" />
                 </div>
               </div>

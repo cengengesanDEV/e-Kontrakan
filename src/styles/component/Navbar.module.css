@@ -84,5 +84,21 @@
   font-size: 12px;
   text-align: center;
   color: #1A1A1A;
+}
 
+.name_customer {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  color: #1A1A1A;
+  width: 200px;
+  height: 50px;
+  overflow-y: hidden;
+  word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: end;
 }

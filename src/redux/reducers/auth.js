@@ -8,14 +8,9 @@ const initialState = {
   profile: {
     email: null,
     phone_number: null,
-    displayname: null,
-    firstname: null,
-    lastname: null,
+    fullname: null,
     role: null,
-    gender: null,
-    birthday: null,
-    address: null,
-    image: `https://res.cloudinary.com/dx7cvqczn/image/upload/v1667811029/coffee_addict/pic_default.png`,
+    image: `https://res.cloudinary.com/derghlznx/image/upload/v1673008181/E-kontrakan/userdefault_upicat.jpg`,
   },
   product: {
     id_product: null,
@@ -53,7 +48,7 @@ const authReducer = (prevState = initialState, {type, payload}) => {
         isLoading: false,
         isError: true,
         isFulfilled: false,
-        error: payload.error.response.data.msg,
+        // error: payload.error.response.data.msg,
       };
     case profile + fulfilled:
       return {
@@ -63,16 +58,11 @@ const authReducer = (prevState = initialState, {type, payload}) => {
         isLoading: false,
         error: null,
         profile: {
-          email: payload.data.result[0].email,
-          role: payload.data.result[0].role,
-          phone_number: payload.data.result[0].phone_number,
-          displayname: payload.data.result[0].displayname,
-          firstname: payload.data.result[0].firstname,
-          lastname: payload.data.result[0].lastname,
-          gender: payload.data.result[0].gender,
-          birthday: payload.data.result[0].birthday,
-          address: payload.data.result[0].address,
-          image: payload.data.result[0].image,
+          email: payload.data.data[0].email,
+          role: payload.data.data[0].role,
+          phone_number: payload.data.data[0].phone_number,
+          fullname: payload.data.data[0].full_name,
+          image: payload.data.data[0].image,
         },
       };
 

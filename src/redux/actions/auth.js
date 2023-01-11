@@ -1,5 +1,5 @@
 import ACTION_STRING from './actionStrings';
-// import { } from '../../utils/axios'
+import { GetUser } from '../../utils/axios'
 
 
 // action Logout
@@ -32,8 +32,40 @@ const logoutThunk = token => {
   };
 };
 
+
+// Action Get user by id
+const profilePending = () => ({
+  type: ACTION_STRING.profile.concat(ACTION_STRING.pending),
+});
+
+const profileRejected = error => ({
+  type: ACTION_STRING.profile.concat(ACTION_STRING.rejected),
+  payload: {error},
+});
+
+const profileFulfilled = data => ({
+  type: ACTION_STRING.profile.concat(ACTION_STRING.fulfilled),
+  payload: {data},
+});
+
+const profileThunk = (token, navigate) => {
+  return async dispatch => {
+    try {
+      dispatch(profilePending());    
+      const response = await GetUser(token);
+      console.log(response.data)
+      dispatch(profileFulfilled(response.data));
+      if (typeof navigate === 'function') navigate();
+    } catch (error) {
+      dispatch(profileRejected(error));
+      console.log(error);
+    }
+  };
+};
+
 const authAction = {
   logoutThunk,
+  profileThunk,
 };
 
 export default authAction;

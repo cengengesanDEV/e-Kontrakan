@@ -17,11 +17,12 @@ import Footer from "../component/Footer";
 import { Icon } from "react-icons-kit";
 import { eye } from "react-icons-kit/feather/eye";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import { RegisterAccount } from '../utils/axios';
 
 function Register() {
+  const navigate = useNavigate()
 
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
@@ -53,7 +54,7 @@ function Register() {
     setPassword(e.target.value)
   }
   const valueRole = (e) => {
-    setRole(e.target.value)
+    setRole(e.target.value)    
   }
 
 
@@ -72,15 +73,17 @@ function Register() {
         role : role
       })
       toast.success(response.data.msg, {
-          position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.TOP_RIGHT,
       })
-      Navigate("/login")
+      setTimeout(() => {
+        navigate("/login")
+      }, 2000);
       setLoading(false)
     } catch (error) {
+      setLoading(false)
       toast.error(error.response.data.msg, {
         position: toast.POSITION.TOP_RIGHT,
     })
-      setLoading(false)
     }
   }
 
@@ -105,12 +108,12 @@ function Register() {
               </div>
               <div className={css.input_login_email}>
                 <label htmlFor="">Email</label>
-                <input type="text" name="" id="" placeholder='please input email address' onChange={valueEmail} />
+                <input type="text" placeholder='please input email address' onChange={valueEmail} />
               </div>
               <div className={css.input_login_password}>
                 <label htmlFor="">Password</label>
                 <div className={css.show_eye} onClick={showPassword}>
-                  <input type={type} name="" id="" placeholder='please input password' onChange={valuePassword} />
+                  <input type={type} placeholder='please input password' onChange={valuePassword} />
                   <Icon icon={icon} className="ms-2 my-2" />
                 </div>
               </div>
@@ -121,28 +124,26 @@ function Register() {
                   fields={6}
                   maxLength={12}
                   pattern="[0-9]{12}"
-                  name=""
-                  id=""
                   value={phoneNumber}
                   onChange={valueNumber}
                   placeholder='please input phone number' />
               </div>
               <div className={css.container_radio}>
               <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={valueRole} />
+                <input className="form-check-input" type="radio" value='owner' name="flexRadioDefault" id="flexRadioDefault1" onChange={valueRole} />
                 <label className={`${css.label_owner} form-check-label`} for="flexRadioDefault1">
                   Owner
                 </label>
               </div>
               <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={valueRole} />
+                <input className="form-check-input" type="radio" value='customer' name="flexRadioDefault" id="flexRadioDefault2" onChange={valueRole} />
                 <label className={`${css.label_customer} form-check-label`} for="flexRadioDefault2">
                   Customer
                 </label>
               </div>
               </div>
               <div className={css.link_register}>
-                <p>You have an account? Let's <Link to='/'>Login</Link></p>
+                <p>You have an account? Let's <Link to='/login'>Login</Link></p>
               </div>
               <div className={css.button_container}>
                 {loading ? <div className="d-flex justify-content-center align-items-center pt-3">
