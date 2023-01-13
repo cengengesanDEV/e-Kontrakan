@@ -44,18 +44,49 @@
   color: #1a1a1a;
 }
 
-.title_kontrakan > button {
-  border: none;
-  background-color: #1a1a1a;
-  border-radius: 10px;
+.btn_modal {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
   font-family: 'Arimo';
   font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
+  font-weight: 700;
+  font-size: 14px;
   line-height: 21px;
-  color: white;
-  padding: 10px 20px;
-}
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+ .btn_modal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ .btn_modal:hover {
+  color: #e8e8e8;
+ }
+ 
+ .btn_modal:hover::before {
+  width: 100%;
+ }
 
 
 
@@ -100,3 +131,292 @@
   height: 500px;
   overflow-y: scroll;
 }
+
+
+.btn_modal_1 {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+ .btn_modal_1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ .btn_modal_1:hover {
+  color: #e8e8e8;
+ }
+ 
+ .btn_modal_1:hover::before {
+  width: 100%;
+ }
+
+ .btn_modal_2 {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+ .btn_modal_2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ .btn_modal_2:hover {
+  color: #e8e8e8;
+ }
+ 
+ .btn_modal_2:hover::before {
+  width: 100%;
+ }
+
+
+ /* input */
+ .form_name_kontrakan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form_name_kontrakan > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.form_name_kontrakan > input {
+  outline: none;
+  border: none;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 5px 0;
+}
+
+
+ .form_type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.form_type > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.form_type > input {
+  outline: none;
+  border: none;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 5px 0;
+}
+
+ .form_price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.form_price > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.form_price > input {
+  outline: none;
+  border: none;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 5px 0;
+}
+
+ .form_desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.form_desc > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.form_desc > input {
+  outline: none;
+  border: none;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 5px 0;
+}
+
+.container_modals {
+  width: 100%;
+  overflow-y: scroll;
+  height: 400px;
+}
+
+
+.container_modals {
+  width: 100%;
+  overflow-y: scroll;
+  height: 400px;
+  /* padding: 0 20px 0 0; */
+}
+
+.container_image {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.choose_image {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.image_content {
+  margin: 10px 0;
+}
+
+.image-preview {
+  box-shadow: 10px -5px 0px #1a1a1a;
+  object-fit: cover;
+  padding: 2px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.image_content > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.image_preview {   
+  border: 2px dashed black;
+  cursor: pointer;
+}
+
+.delete_image {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 5px;
+  border-radius: 50px;
+  transform: rotate(45deg);
+  border: 2px solid white;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.form_fasilitas {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 20px;
+}
+
+.data_profile > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px; 
+}
+
+.data_profile > input {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+
+
+
+ 
