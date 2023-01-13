@@ -93,9 +93,11 @@ function Login() {
         }))
       
       // navigate('/')
-    } catch (error) {
+    } catch (err) {
       setLoading(false)
-      console.log(error)
+      toast.error(err.response.data.msg, {
+        position: toast.POSITION.TOP_RIGHT,
+      })
     }
     
   }

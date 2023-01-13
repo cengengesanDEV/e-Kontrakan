@@ -10,6 +10,9 @@ const initialState = {
     phone_number: null,
     fullname: null,
     role: null,
+    gender: null,
+    location: null,
+    address: null,
     image: `https://res.cloudinary.com/derghlznx/image/upload/v1673008181/E-kontrakan/userdefault_upicat.jpg`,
   },
   product: {
@@ -62,6 +65,9 @@ const authReducer = (prevState = initialState, {type, payload}) => {
           role: payload.data.data[0].role,
           phone_number: payload.data.data[0].phone_number,
           fullname: payload.data.data[0].full_name,
+          gender: payload.data.data[0].gender,
+          location: payload.data.data[0].location,
+          address: payload.data.data[0].address,
           image: payload.data.data[0].image,
         },
       };
