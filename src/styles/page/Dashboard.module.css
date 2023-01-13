@@ -12,6 +12,7 @@
   font-size: 40px;
   line-height: 21px;
 }
+
 .title_desc_top_2 {
   color: #AAAAAA;
   text-align: center;
@@ -36,64 +37,70 @@
 .container_image_kontrakan_1 {
   padding-top: 0;
 }
+
 .container_image_kontrakan_2 {
   padding-top: 20px;
 }
+
 .container_image_kontrakan_3 {
   padding-top: 40px;
 }
+
 .container_image_kontrakan_4 {
   padding-top: 20px;
 }
+
 .container_image_kontrakan_5 {
   padding-top: 0;
 }
-
-
 
 .content_image_1 {
   width: 200px;
   height: 400px;
   background-size: cover;
   background-repeat: no-repeat;
-  display:flex;
-  border-radius:10px;
+  display: flex;
+  border-radius: 10px;
   box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.63)
 }
+
 .content_image_2 {
   width: 200px;
   height: 400px;
   background-size: cover;
   background-repeat: no-repeat;
-  display:flex;
-  border-radius:10px;
+  display: flex;
+  border-radius: 10px;
   box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.63)
 }
+
 .content_image_3 {
   width: 200px;
   height: 400px;
   background-size: cover;
   background-repeat: no-repeat;
-  display:flex;
-  border-radius:10px;
+  display: flex;
+  border-radius: 10px;
   box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.63)
 }
+
 .content_image_4 {
   width: 200px;
   height: 400px;
   background-size: cover;
   background-repeat: no-repeat;
-  display:flex;
-  border-radius:10px;
+  display: flex;
+  border-radius: 10px;
   box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.63)
 }
+
 .content_image_5 {
   width: 200px;
   height: 400px;
   background-size: cover;
   background-repeat: no-repeat;
-  display:flex;
-  border-radius:10px;
+  display: flex;
+  border-radius: 10px;
   box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.63)
 }
 
@@ -128,7 +135,7 @@
   padding: 50px 100px 100px 100px;
 }
 
-.fasilitas_image > img {
+.fasilitas_image>img {
   width: 300px;
   height: 400px;
   background-size: cover;
@@ -155,7 +162,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
-  line-height: 21px; 
+  line-height: 21px;
 }
 
 .about_desc {
@@ -166,7 +173,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 21px; 
+  line-height: 21px;
   padding-top: 30px;
 }
 
@@ -186,7 +193,7 @@
   align-items: center;
 }
 
-.fasilitas_detail_1 > i {
+.fasilitas_detail_1>i {
   font-size: 30px;
   color: #DADADA;
   border: 2px solid #DADADA;
@@ -194,13 +201,13 @@
   border-radius: 50%;
 }
 
-.fasilitas_detail_1 > p {
+.fasilitas_detail_1>p {
   color: #AAAAAA;
   text-align: center;
   font-family: 'Arimo';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
-  line-height: 21px; 
+  line-height: 21px;
   padding-top: 10px;
 }
