@@ -12,6 +12,7 @@
   padding: 0 30px 0 30px;
   padding-top: 50px;
   margin-top: 50px;
+  margin-bottom: 50px;
   border: 1px solid black;
   border-radius: 10px;
 }
@@ -31,7 +32,7 @@
 }
 
 
-.button_edit_password > button {
+/* .button_edit_password > button {
   border: none;
   background-color: #1a1a1a;
   border-radius: 10px;
@@ -46,7 +47,7 @@
 
 .button_edit_password > button:hover {
   background-color: #4a4a4a;
-}
+} */
 
 .image_profile > input {
   position: absolute;
@@ -95,75 +96,320 @@
 
 
 /* content input */
-.content_input {
+.data_detail {
+  padding: 40px 0 0 0;  
+  margin-bottom: 60px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  padding-top: 50px;
+  justify-content: space-between;
 }
 
-.fullname {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-}
-
-.fullname > label {
+.title_data {
   font-family: 'Arimo';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
-  line-height: 21px;
-  
+  line-height: 21px; 
+  margin-bottom: 20px;
 }
 
-.fullname > input {
-  padding-top: 10px;
-  border: none;
-  outline: none;
-  border-bottom: 2px solid #1a1a1a;
-  width: 70%;
-}
-
-.phone_number {
+.box_container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
 }
 
-.phone_number > label {
+.data_profile > label {
   font-family: 'Arimo';
   font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 21px;
-  
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px; 
 }
 
-.phone_number > input {
-  padding-top: 10px;
-  border: none;
-  outline: none;
-  border-bottom: 2px solid #1a1a1a;
-  width: 70%;
-}
 
-.save_change {
+.noted {
   padding-top: 50px;
 }
 
-.save_change > button {
-  border: none;
-  background-color: #1a1a1a;
-  border-radius: 10px;
+.noted > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;   
+}
+
+
+
+.btn_edit_password {
+  padding: 10px 20px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+ .btn_edit_password::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ .btn_edit_password:hover {
+  color: #e8e8e8;
+ }
+ 
+ .btn_edit_password:hover::before {
+  width: 100%;
+ }
+
+
+ /* card */
+ .card {
+  box-sizing: border-box;
+  width: 190px;
+  height: 254px;
+  background: rgba(217, 217, 217, 0.58);
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(3px);
+  border-radius: 17px;
+  text-align: center;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-weight: bolder;
+  margin-right: 40px;
+}
+
+.card:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
+.card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+.image_card {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.card_title_fullname {
+  width: 100%;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  padding-top: 10px;
+}
+
+.card_title_phone_number {
+  width: 100%;
   font-family: 'Arimo';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  line-height: 21px;
-  color: white;
-  padding: 10px 20px; 
+  /* line-height: 21px; */
 }
+
+
+/* text input */
+.form_fullname {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form_fullname > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.form_fullname > input {
+  outline: none;
+  border: none;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 5px 0;
+}
+
+.form_address {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form_address > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.form_address > input {
+  outline: none;
+  border: none;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 5px 0;
+}
+
+.form_location {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.form_location > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.form_location > input {
+  outline: none;
+  border: none;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 5px 0;
+}
+
+.radio_gender {
+  padding-top: 20px; 
+}
+
+.gender_title {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+
+.btn_modal_1 {
+  padding: 10px 20px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  margin-right: 20px;
+  margin-top: 20px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+ .btn_modal_1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ .btn_modal_1:hover {
+  color: #e8e8e8;
+ }
+ 
+ .btn_modal_1:hover::before {
+  width: 100%;
+ }
+
+.btn_modal_2 {
+  padding: 10px 20px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+ .btn_modal_2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ .btn_modal_2:hover {
+  color: #e8e8e8;
+ }
+ 
+ .btn_modal_2:hover::before {
+  width: 100%;
+ }
