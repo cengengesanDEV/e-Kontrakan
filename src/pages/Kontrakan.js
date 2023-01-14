@@ -57,6 +57,69 @@ function Kontrakan() {
                            configs={{ position: { y: "bottom", x: "center" } }}
                         />
                      </div>
+
+                     {/* Sorting Price */}
+                  </div>
+                  <div>
+                     <p className="text-center fw-bold fs-3 mt-3">
+                        Sort prices
+                     </p>
+                     <div className={css.sorting_bar}>
+                        <form>
+                           <input
+                              id="a"
+                              type="radio"
+                              name="sorting"
+                              value="a"
+                              checked
+                           />
+                           <label htmlFor="a">
+                              <span></span>Cheapest
+                           </label>
+                           <input
+                              id="b"
+                              type="radio"
+                              name="sorting"
+                              value="b"
+                           />
+                           <label htmlFor="b">
+                              <span></span>Expensive
+                           </label>
+
+                           <div className={css.worm}>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                              <div className={css.worm__segment}></div>
+                           </div>
+                        </form>
+                     </div>
                   </div>
                </div>
 
