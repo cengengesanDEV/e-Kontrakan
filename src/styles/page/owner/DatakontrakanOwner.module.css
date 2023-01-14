@@ -90,7 +90,7 @@
 .scroll {
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 480px;
   overflow-y: scroll;
 }
 

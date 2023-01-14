@@ -4,20 +4,20 @@ import css from "../styles/component/ListkontrakanlocationOwner.module.css"
 import img_kontrakan from '../assets/kontrakan1.png'
 import { useNavigate } from 'react-router-dom'
 
-function ListkontrakanOwner() {
+function ListkontrakanOwner(props) {
 
   const navigate = useNavigate()
 
-  const kontrakandetailowner = () => navigate('/kontrakandetailowner')
+  const kontrakandetailowner = () => navigate(`/kontrakandetailowner/${props.id_location}`)
 
 
   return (
     <>
       <div className={css.content_list_kontrakan}>
-        <p className={css.list_no}>1</p>
-        <img src={img_kontrakan} alt="kontrakan" />
-        <p className={css.list_name_kontrakan}>Room Melati-002 Lantai 2</p>
-        <p className={css.list_tipe}>IDR. 1.500.000/month</p>
+        <p className={css.list_no}>{props.no}</p>
+        <img src={props.image_kontrakan} alt="kontrakan" />
+        <p className={css.list_name_kontrakan}>{props.tipe}</p>
+        <p className={css.list_tipe}>{props.price}</p>
         <button className={css.list_action} onClick={kontrakandetailowner}>Preview</button>
         <button className={css.edit_kontrakan}><i className="fa-solid fa-pen-to-square text-dark"></i></button>
         <button className={css.trash}><i className="fa-solid fa-trash"></i></button>

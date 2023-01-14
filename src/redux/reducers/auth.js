@@ -6,6 +6,7 @@ const initialState = {
   isFulfilled: false,
   error: null,
   profile: {
+    id_acc: null,
     email: null,
     phone_number: null,
     fullname: null,
@@ -61,6 +62,7 @@ const authReducer = (prevState = initialState, {type, payload}) => {
         isLoading: false,
         error: null,
         profile: {
+          id_acc: payload.data.data[0].id,
           email: payload.data.data[0].email,
           role: payload.data.data[0].role,
           phone_number: payload.data.data[0].phone_number,

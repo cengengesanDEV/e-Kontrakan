@@ -1,26 +1,107 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import css from "../../styles/page/owner/KontrakanLocation.module.css"
 import Navbar from '../../component/Navbar'
 import Footer from '../../component/Footer'
 import Sidebarowner from '../../component/Sidebar_owner'
 import ListkontrakanOwner from '../../component/ListkontrakanlocationOwner'
-import { Modal } from 'react-bootstrap'
+import { Modal, Spinner } from 'react-bootstrap'
 import createImage from "../../assets/create.png"
-
+import { detailKontrakanGet, detailKontrakanadd } from '../../utils/axios'
+import { useParams } from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function KontrakanLocation() {
 
+  const { id_kontrakan } = useParams()
+  console.log(id_kontrakan)
+
+
   const [showadd, setShowadd] = useState(false)
   const [images, setImages] = useState([]);
+  const [type_kontrakan, setType_kontrakan] = useState(null)
+  const [price, setPrice] = useState(null)
+  const [desc, setDesc] = useState(null)
+  const [fasilitas, setFasilitas] = useState([])
+  const [datakontrakan, setDatakontrakan] = useState([])
+  const [loading, setLoading] = useState(false)
 
 
   const deleteImage = (index) => {
     setImages(images.filter((image, i) => i !== index));
   };
 
+  const valueType_kontrakan = (e) => {setType_kontrakan(e.target.value)}
+  const valuePrice = (e) => {setPrice(e.target.value)}
+  const valueDesc = (e) => {setDesc(e.target.value)}
+  const valueFasilitas = (e) => {
+    const value = e.target.value;
+    if (e.target.checked) {
+      setFasilitas([...fasilitas, value]);
+    } else {
+      setFasilitas(fasilitas.filter((v) => v !== value));
+    }
+  };
+
+
+  const clearState = () => {
+    setImages([])
+    setPrice(null)
+    setDesc(null)
+    setFasilitas([])
+    setType_kontrakan(null)
+  }
+
+
+  useEffect(() => {
+    setLoading(true)
+    detailKontrakanGet(id_kontrakan)
+    .then((res) => {
+      setDatakontrakan(res.data.data)
+      setLoading(false)
+    })
+    .catch((err) => {
+      console.log(err)
+      setLoading(false)
+    })    
+  }, [])
+
+  const handleAddLocation = async () => {
+    try {
+      const getToken = localStorage.getItem('token')
+      const formData = new FormData()
+      formData.append("id_kontrakan", id_kontrakan)
+      images.forEach((image) => {
+        formData.append("images", image);
+      });
+      formData.append('tipe_kontrakan', type_kontrakan)
+      formData.append('fasilitas', (fasilitas))
+      formData.append('price', price)
+      formData.append('deskripsi', desc)
+      const result = await detailKontrakanadd(formData, getToken)
+      toast.success(result.data.msg, {
+        position: toast.POSITION.TOP_RIGHT,
+      })
+      detailKontrakanGet(id_kontrakan)
+      .then((res) => {
+        console.log(res.data.data)
+        setDatakontrakan(res.data.data)
+      })
+      .catch((err) => console.log(err))
+      setShowadd(false)
+      clearState()
+    } catch (err) {
+      console.log(err)
+      toast.error(err.response.data.msg, {
+        position: toast.POSITION.TOP_RIGHT,
+      })
+    }
+  }
+
   return (
     <>
+      <ToastContainer />
       <Navbar />
         <div className="container-fluid">
           <div className={css.container_left_right}>
@@ -42,20 +123,21 @@ function KontrakanLocation() {
                   <p className={css.action}>Detail</p>
                 </div>
                 {/* component */}
-                <div className={css.scroll}>
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                  <ListkontrakanOwner />
-                </div>
+                {loading 
+                ? <div className="d-flex justify-content-center align-items-center pt-5">
+                    <Spinner animation="border" />
+                  </div> 
+                : <div className={css.scroll}>
+                {datakontrakan.length !== 0 ? datakontrakan.map((e,index) => (
+                    <ListkontrakanOwner
+                     no={index + 1}
+                     id_location={e.id}
+                     image_kontrakan={e.image}
+                     price={e.price}
+                     tipe={e.tipe_kontrakan}
+                    />
+                  )) : "data kosong"}
+                </div>}
               </div>
             </div>
           </div>
@@ -78,27 +160,23 @@ function KontrakanLocation() {
         </Modal.Header>
         <Modal.Body>
         <div className={css.container_modals}>
-          <div className={css.form_name_kontrakan}>
-            <label htmlFor="">Id kontrakan</label>
-            <input type="text" placeholder='id' disabled />
-          </div>
           <div className={css.form_type}>
             <label htmlFor="">Type Name Kontrakan</label>
-            <input type="text" name="" id="" placeholder='Please input type name kontrakan' />
+            <input type="text" value={type_kontrakan} onChange={valueType_kontrakan} placeholder='Please input type name kontrakan' />
           </div>
           <div className={css.form_price}>
             <label htmlFor="">Price</label>
-            <input type="text" placeholder='Please input address' />
+            <input type="text" value={price} onChange={valuePrice} placeholder='Please input address' />
           </div>
           <div className={css.form_desc}>
             <label htmlFor="">Description</label>
-            <input type="text" placeholder='Please input address' />
+            <input type="text" value={desc} onChange={valueDesc} placeholder='Please input address' />
           </div>
           <label className={css.choose_image} htmlFor="">Fasilitas</label>
           <div className={css.form_fasilitas}>
             <div className={`${css.data_profile} d-flex flex-column justify-content-center gap-2`}>
               <label htmlFor="">Ac</label>
-              <label htmlFor="">Extra Bed</label>
+              <label htmlFor="">Shower</label>
               <label htmlFor="">Twin Bed</label>
               <label htmlFor="">Toilet</label>
               <label htmlFor="">Haduk</label>
@@ -113,12 +191,12 @@ function KontrakanLocation() {
               <label htmlFor="">:</label>
             </div>
             <div className={`${css.data_profile} d-flex flex-column justify-content-center gap-3`}>
-              <input type="checkbox" />
-              <input type="checkbox" />
-              <input type="checkbox" />
-              <input type="checkbox" />
-              <input type="checkbox" />
-              <input type="checkbox" />
+              <input type="checkbox" value='AC' onChange={valueFasilitas} />
+              <input type="checkbox" value='Shower' onChange={valueFasilitas} />
+              <input type="checkbox" value='Twin Bed' onChange={valueFasilitas} />
+              <input type="checkbox" value='Toilet' onChange={valueFasilitas} />
+              <input type="checkbox" value='Haduk' onChange={valueFasilitas} />
+              <input type="checkbox" value='Selimut' onChange={valueFasilitas} />
             </div>     
           </div>
           <p className={css.choose_image}>Choose Image</p>
@@ -156,7 +234,7 @@ function KontrakanLocation() {
                   </label>
                 )}
           </div>
-          <button className={css.btn_modal_1}>Save Changes</button>
+          <button className={css.btn_modal_1} onClick={handleAddLocation}>Save Changes</button>
           <button className={css.btn_modal_2}>Cancel</button>
         </div>
         </Modal.Body>

@@ -21,8 +21,8 @@ const router = createBrowserRouter([
   { path: "/dashboardowner", element: <DashboardOwner /> },
   { path: "/profileowner", element: <ProfileOwner /> },
   { path: "/kontrakanowner", element: <DatakontrakanOwner /> },
-  { path: "/kontrakanlocationowner", element: <KontrakanLocationOwner /> },
-  { path: "/kontrakandetailowner", element: <KontrakanDetailOwner /> },
+  { path: "/kontrakanlocationowner/:id_kontrakan", element: <KontrakanLocationOwner /> },
+  { path: "/kontrakandetailowner/:id_location", element: <KontrakanDetailOwner /> },
 ]);
 
 export default router;

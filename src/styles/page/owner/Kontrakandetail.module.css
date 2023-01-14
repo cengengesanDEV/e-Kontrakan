@@ -1,0 +1,78 @@
+.container_left_right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.container_right {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  width: 70%;
+  padding: 0 30px 0 30px;
+  padding-top: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.title_preview {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 21px; 
+  padding-bottom: 60px;
+}
+
+.container_image_preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.container_preview {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.container_preview > img {
+  border-radius: 20px;
+}
+
+.container_preview > img:hover {
+  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.63);
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+
+.kontrakan_detail {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  padding: 30px 0;
+}
+
+.box_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.data_profile > label {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  /* line-height: 21px;  */
+}
