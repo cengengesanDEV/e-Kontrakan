@@ -65,7 +65,7 @@ function Kontrakan() {
                         Sort prices
                      </p>
                      <div className={css.sorting_bar}>
-                        <form>
+                        <form className={css.form_kontrakan}>
                            <input
                               id="a"
                               type="radio"

@@ -85,20 +85,20 @@
   padding: 1.5em 0;
 }
 
-form {
+.form_kontrakan {
   display: block;
   margin: auto;
   max-width: 10em;
   position: relative;
 }
 
-input {
+.form_kontrakan input {
   position: fixed;
   top: -1.5em;
   left: -1.5em;
 }
 
-label {
+.form_kontrakan label {
   cursor: pointer;
   display: block;
   font-weight: bold;
@@ -106,11 +106,11 @@ label {
   transition: color 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
-label:not(:last-of-type) {
+.form_kontrakan label:not(:last-of-type) {
   margin-bottom: 1.5em;
 }
 
-label span {
+.form_kontrakan label span {
   box-shadow: 0 0 0 0.2em currentColor inset, 0 0.2em 0.2em rgba(0, 0, 0, 0.2), 0 0.3em 0.2em rgba(0, 0, 0, 0.2) inset;
   display: inline-block;
   margin-right: 0.5em;
@@ -120,23 +120,23 @@ label span {
   transition: transform 0.2s cubic-bezier(0.5, 0, 0.5, 2), box-shadow 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95), color 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
-label span,
+.form_kontrakan label span,
 .worm__segment:before {
   border-radius: 50%;
 }
 
-input:checked+label,
-input:checked+label span,
+.form_kontrakan input:checked+label,
+.form_kontrakan input:checked+label span,
 .worm__segment:before {
   color: #000;
 }
 
-input:checked+label,
-input:checked+label span {
+.form_kontrakan input:checked+label,
+.form_kontrakan input:checked+label span {
   transition-delay: 0.4s;
 }
 
-input:checked+label span {
+.form_kontrakan input:checked+label span {
   transform: scale(1.2);
 }
 
@@ -406,7 +406,7 @@ input:checked+label span {
 }
 
 /* States */
-input:nth-of-type(1):checked~.worm .worm__segment:before {
+.form_kontrakan input:nth-of-type(1):checked~.worm .worm__segment:before {
   animation-name: hop1;
 }
 
@@ -422,11 +422,11 @@ input:nth-of-type(1):checked~.worm .worm__segment:before {
   }
 }
 
-input:nth-of-type(2):checked~.worm .worm__segment {
+.form_kontrakan input:nth-of-type(2):checked~.worm .worm__segment {
   transform: translateY(3em);
 }
 
-input:nth-of-type(2):checked~.worm .worm__segment:before {
+.form_kontrakan input:nth-of-type(2):checked~.worm .worm__segment:before {
   animation-name: hop2;
 }
 
@@ -442,11 +442,11 @@ input:nth-of-type(2):checked~.worm .worm__segment:before {
   }
 }
 
-input:nth-of-type(3):checked~.worm .worm__segment {
+.form_kontrakan input:nth-of-type(3):checked~.worm .worm__segment {
   transform: translateY(6em);
 }
 
-input:nth-of-type(3):checked~.worm .worm__segment:before {
+.form_kontrakan input:nth-of-type(3):checked~.worm .worm__segment:before {
   animation-name: hop3;
 }
 
