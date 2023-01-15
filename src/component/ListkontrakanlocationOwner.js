@@ -1,7 +1,6 @@
 import React from 'react'
 
 import css from "../styles/component/ListkontrakanlocationOwner.module.css"
-import img_kontrakan from '../assets/kontrakan1.png'
 import { useNavigate } from 'react-router-dom'
 
 function ListkontrakanOwner(props) {
@@ -19,8 +18,8 @@ function ListkontrakanOwner(props) {
         <p className={css.list_name_kontrakan}>{props.tipe}</p>
         <p className={css.list_tipe}>{props.price}</p>
         <button className={css.list_action} onClick={kontrakandetailowner}>Preview</button>
-        <button className={css.edit_kontrakan}><i className="fa-solid fa-pen-to-square text-dark"></i></button>
-        <button className={css.trash}><i className="fa-solid fa-trash"></i></button>
+        <button className={css.edit_kontrakan} onClick={props.handle_edit}><i className="fa-solid fa-pen-to-square text-dark"></i></button>
+        <button className={css.trash} onClick={props.handle_delete}><i className="fa-solid fa-trash"></i></button>
     </div>
           
     </>

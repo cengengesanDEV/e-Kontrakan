@@ -1,6 +1,6 @@
 .container {
     width: 25%;
-    margin: 0 auto;
+    margin: 40px 0;
     height: 380px;
     display: flex;
     justify-content: center;
@@ -43,6 +43,7 @@
     top: 13.5px;
     transform: translateY(-50%);
 } */
+
 
 .container .box .top {
     position: relative;
@@ -122,7 +123,9 @@
 }
 
 .container .box .bottom h3 {
+    height: 38px;
     font-size: 15px;
+    overflow: hidden;
 }
 
 .container .box .bottom>p {
@@ -137,7 +140,10 @@
 }
 
 .container .box .bottom .advants>div {
-    margin-right: 15px;
+    /* margin-right: 15px; */
+    height: 100px;
+    overflow: hidden;
+    text-align: start;
 }
 
 .container .box .bottom .advants>div>span {

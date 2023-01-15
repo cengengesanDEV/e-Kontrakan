@@ -1,18 +1,20 @@
 import React from "react";
 import css from "../styles/component/CardKontrakan.module.css";
-function CardKontrakan() {
+function CardKontrakan(props) {
    return (
       <div className={css.container}>
          <div className={css.box}>
-            <span className={`${css.area} bg-danger`}>DKI JAKARTA</span>
+            <span className={`${css.area} bg-danger`}>{props.location_top}</span>
             {/* <span
                className={css.box}
                style={{ "&:first-of-type:before": styles.before }}
             ></span> */}
             <div className={css.top}>
                <img
-                  src="https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271__340.jpg"
+                  src={props.image}
                   alt="img_kontrakan"
+                  width="100"
+                  height="150"
                />
                {/* <span>
                   <i className="fas fa-heart"></i>
@@ -20,7 +22,7 @@ function CardKontrakan() {
                </span> */}
             </div>
             <div className={css.bottom}>
-               <h3>Rumah Asik² Indehoy</h3>
+               <h3>{props.tipe}</h3>
                <br />
 
                {/* <p>
@@ -29,8 +31,8 @@ function CardKontrakan() {
                </p> */}
                <div className={css.advants}>
                   <div>
-                     <span className="text-muted">
-                        Jl.Tipar Cakung RT.021/RW.08
+                     <span className={`text-muted`}>
+                        {props.address}
                      </span>
                      <br />
                      {/* <i className="fas fa-th-large"></i>
@@ -59,7 +61,7 @@ function CardKontrakan() {
                <div className={css.price}>
                   <span>Dikontrakan</span>
                   <span className="text-success fw-bold fs-5">
-                     Rp.90.000.000/years
+                     {props.price}/years
                   </span>
                </div>
             </div>

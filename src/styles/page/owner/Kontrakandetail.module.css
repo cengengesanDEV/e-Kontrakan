@@ -1,7 +1,7 @@
 .container_left_right {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between; 
 }
 
 
@@ -27,52 +27,183 @@
   padding-bottom: 60px;
 }
 
+
 .container_image_preview {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 10px;
 }
 
 .container_preview {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 20px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.image_prev {
   cursor: pointer;
 }
 
-.container_preview > img {
+.image_prev > img {
+  box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.63);
   border-radius: 20px;
+  
 }
 
-.container_preview > img:hover {
+.image_prev > img:hover {
   box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.63);
   transform: scale(1.2);
   cursor: pointer;
 }
 
 
-.kontrakan_detail {
+
+
+
+.card {
+  width: 300px;
+  height: 300px;
+  background-color: #212121;
+  box-shadow: 15px 15px 30px #191919,-15px -15px 30px #292929;
+  transition: border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 1s,transform cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+ }
+ 
+ .card:hover {
+  border-bottom-right-radius: 50px;
+  border-top-left-radius: 50px;
+  transform: scale(1.0);
+ }
+
+
+
+ .title_kontrakan {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 21px;
+ }
+ 
+
+
+
+
+ /* preview */
+ .card_preview {
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.212);
+  background: #fff;
+  display: flex;
+  border-radius: 20px;
+  justify-content: center;
+  position: relative;
+  transition: all .4s;
+  background-color: #1a1a1a;
+}
+
+.card_preview::before {
+  content: '-Preview-';
+  cursor: pointer;
+  letter-spacing: 0.2em;
+  position: absolute;
+  bottom: 8px;
+  left: 20px;
+  /* color: rgb(51, 51, 51); */
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: 700;
+ }
+ 
+ .card_preview img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.212);
+  cursor: pointer;
+  z-index: 10;
+  transition: all .4s;
+  background-color: #fff;
+ }
+ 
+ .card_preview:hover img {
+  transform: translateY(-30px);
+ }
+
+
+
+
+ .kontrakan_detail {
   font-family: 'Arimo';
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 21px;
-  padding: 30px 0;
+  padding: 50px 0 20px 0;
 }
 
-.box_container {
+ .title_kontrakan {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 21px;
+ }
+
+ .owner_price {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
-}
+  justify-content: space-between;
+  width: 50%;
+  padding-top: 20px;
+ }
 
-.data_profile > label {
+ .owner_price p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+ }
+
+ .desc {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  /* line-height: 21px;  */
+  font-size: 14px;
+  line-height: 21px;
+  text-align: justify;
+  padding-top: 20px;
+  padding-bottom: 20px;
+ }
+
+ .box_container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 30px;
+  padding-top: 20px;
+}
+
+.data_profile > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px; 
+}
+
+.data_profile_1 {
+  width: 20%;
+}
+.data_profile_1 > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px; 
 }

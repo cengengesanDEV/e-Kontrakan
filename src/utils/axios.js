@@ -14,6 +14,15 @@ export const LoginAccount = (body) => {
   return axios.post(`${URL}/auth`, body);
 };
 
+// Axios logout
+export const LogoutAccount = (token) => {
+  return axios.delete(`${URL}/auth`, {
+    headers: {
+      'x-access-token' : token
+    }
+  });
+};
+
 // Axios get user by id
 export const GetUser = (token) => {
   return axios.get(`${URL}/users`,{
@@ -62,5 +71,31 @@ export const detailKontrakanGet = (id) => {
   return axios.get(`${URL}/kontrakan/detail/${id}`);
 };
 
+
+// Axios get detail location (page = Kontrakan detail location)
+export const locationDetail = (id) => {
+  return axios.get(`${URL}/kontrakan/kontrakan/${id}`);
+};
+
+
+
+// Axios get category by id (page = kontrakan category)
+export const getCategoryKontrakanID = (id) => {
+  return axios.get(`${URL}/kontrakan/kontrakan/category/${id}`);
+};
+
+// Axios patch category by id (page = kontrakan category)
+export const patchCategoryKontrakanID = (id, body, token) => {
+  return axios.patch(`${URL}/kontrakan/category/${id}`, body, {
+    headers: {
+      'x-access-token': token
+    }
+  });
+};
+
+// Axios delete category by id (page = kontrakan category)
+export const deleteCategoryKontrakanID = (id) => {
+  return axios.patch(`${URL}/kontrakan/delete/category/${id}`,{});
+};
 
 

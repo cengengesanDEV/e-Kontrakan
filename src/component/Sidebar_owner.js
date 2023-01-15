@@ -1,14 +1,24 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-
+import authAction from '../redux/actions/auth'
 import css from "../styles/component/Sidebar_owner.module.css"
 
 function Sidebar_owner(props) {
 
   const { page } = props
+  const dispatch = useDispatch()
 
   const navigate = useNavigate()
 
+  const handleLogout = () => {
+    const getToken = localStorage.getItem('token')
+    dispatch(authAction.logoutThunk(getToken, 
+    () => {
+      navigate("/login")
+    }))
+
+  }
 
 
 
@@ -17,7 +27,7 @@ function Sidebar_owner(props) {
             <div className={`container-fluid ${css.container_left}`}>
               <p className={css.role_title}>Owner</p>
               <div className={css.container_bar}>
-                <div className="d-flex flex-column align-items-start w-100">
+                <div className="d-flex flex-column align-items-start w-100 ps-3 gap-2">
                   <button className={page === 'dashboardowner'? css.dashboard_active : css.dashboard} onClick={() => navigate('/dashboardowner')}>
                     <i className='fa-solid fa-house'></i>
                     <p>Dashboard</p>
@@ -30,7 +40,7 @@ function Sidebar_owner(props) {
                     <i className="fa-solid fa-house-chimney-medical"></i>
                     <p>Data Kontrakan</p>
                   </button>
-                  <button className={page === 'datapemesananowner' ? css.pemesanan_active : css.pemesanan}>
+                  <button className={page === 'datapemesananowner' ? css.pemesanan_active : css.pemesanan} onClick={() => navigate('/KontrakanPemesananOwner')}>
                     <i className="fa-solid fa-list"></i>
                     <p>Data Pemesanan</p>
                   </button>
@@ -39,7 +49,7 @@ function Sidebar_owner(props) {
                     <p>History Transaction</p>
                   </button>
                 </div>
-                <button className={css.logout}>
+                <button className={css.logout} onClick={handleLogout}>
                     <i className='fa-solid fa-right-from-bracket'></i>
                     <p>Logout</p>
                 </button>

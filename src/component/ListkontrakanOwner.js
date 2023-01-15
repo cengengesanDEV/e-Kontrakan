@@ -8,7 +8,7 @@ function ListkontrakanOwner(props) {
 
   const navigate = useNavigate()
 
-  const kontrakandetailowner = () => navigate(`/kontrakanlocationowner/${props.id_kontrakan}`)
+  const kontrakandetailowner = () => navigate(`/kontrakanlocationowner/${props.id_kontrakan}/${props.kontrakan_loc}`)
 
 
   return (
@@ -20,8 +20,8 @@ function ListkontrakanOwner(props) {
         <p className={css.list_tipe}>{props.address_kontrakan}</p>
         <p className={css.list_location}>{props.location}</p>
         <button className={css.list_action} onClick={kontrakandetailowner}>Detail</button>
-        <button className={css.edit_kontrakan}><i className="fa-solid fa-pen-to-square text-dark"></i></button>
-        <button className={css.trash}><i className="fa-solid fa-trash"></i></button>
+        <button className={css.edit_kontrakan} onClick={props.handle_edit}><i className="fa-solid fa-pen-to-square text-dark"></i></button>
+        <button className={css.trash} onClick={props.handle_delete}><i className="fa-solid fa-trash"></i></button>
     </div>
           
     </>

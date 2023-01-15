@@ -1,5 +1,5 @@
 import ACTION_STRING from './actionStrings';
-import { GetUser } from '../../utils/axios'
+import { GetUser,LogoutAccount } from '../../utils/axios'
 
 
 // action Logout
@@ -16,15 +16,14 @@ const logoutFulfilled = () => ({
   type: ACTION_STRING.logout.concat(ACTION_STRING.fulfilled),
 });
 
-const logoutThunk = token => {
+const logoutThunk = (token, navigate) => {
   return async dispatch => {
     try {
       dispatch(logoutPending());
-      // await Logout(token);
+      await LogoutAccount(token);
       await localStorage.removeItem('token');
-      await localStorage.removeItem('role');
-
       dispatch(logoutFulfilled());
+      if (typeof navigate === 'function') navigate();
     } catch (error) {
       dispatch(logoutRejected(error));
       console.log(error);
@@ -33,7 +32,6 @@ const logoutThunk = token => {
 };
 
 
-// Action Get user by id
 const profilePending = () => ({
   type: ACTION_STRING.profile.concat(ACTION_STRING.pending),
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // import component
 import Navbar from "../component/Navbar";
@@ -10,7 +10,16 @@ import css from "../styles/page/Kontrakan.module.css";
 // simple dropdown
 import { SimpleDropdown } from "react-js-dropdavn";
 import "react-js-dropdavn/dist/index.css";
+import axios from "axios";
+
+
+
 function Kontrakan() {
+
+   const [datakontrakan, setDatakontrakan] = useState([])
+   const [next, setNext] = useState(null)
+   const [prev, setPrev] = useState(null)
+
    const data = [
       { label: "Aceh", value: 3 },
       { label: "Bandung", value: 4 },
@@ -23,6 +32,61 @@ function Kontrakan() {
       { label: "Palembang", value: 3 },
       { label: "Medan", value: 3 },
    ];
+
+   const costing = (price) => {
+      return (
+         "Rp. " +
+         parseFloat(price)
+            .toFixed()
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+      );
+   };
+
+
+   const handleNext = () => {
+      axios.get(next)
+      .then((res) => {
+      //  console.log(res.data)
+       setDatakontrakan(res.data.data)
+       setNext(res.data.meta.next)
+       setPrev(res.data.meta.prev)
+      })
+      .catch((err) => {
+       console.log(err)
+      })
+   }
+
+   const handlePrev = () => {
+      axios.get(prev)
+      .then((res) => {
+      //  console.log(res.data)
+       setDatakontrakan(res.data.data)
+       setNext(res.data.meta.next)
+       setPrev(res.data.meta.prev)
+      })
+      .catch((err) => {
+       console.log(err)
+      })
+   }
+
+   useEffect(() => {
+     axios.get(`${process.env.REACT_APP_BACKEND_HOST}/kontrakan/?page=1&limit=8`)
+     .then((res) => {
+      console.log(res.data)
+      setDatakontrakan(res.data.data)
+      setNext(res.data.meta.next)
+      setPrev(res.data.meta.prev)
+
+     })
+     .catch((err) => {
+      console.log(err)
+     })
+   
+   }, [])
+   
+
+
+
    return (
       <>
          <Navbar />
@@ -125,19 +189,23 @@ function Kontrakan() {
 
                {/* container right */}
                <div className={`${css.container_right}`}>
-                  <CardKontrakan />
-                  <CardKontrakan />
-                  <CardKontrakan />
-                  <CardKontrakan />
-                  <CardKontrakan />
-                  <CardKontrakan />
-                  <CardKontrakan />
-                  <CardKontrakan />
+                  <div className="d-flex flex-row justify-content-start align-items-start flex-wrap">
+                  {datakontrakan && datakontrakan.map((e,index) => (
+                     <CardKontrakan
+                     keys={index}
+                     location_top={e.province}
+                     price={costing(e.price)}
+                     tipe={e.tipe_kontrakan}
+                     image={e.image}
+                     address={e.detail_address}                     
+                     />
+                  ))}
+                  </div>
                   <div className="d-flex justify-content-center align-items-center mx-auto">
-                     <button className="fw-bold btn btn-dark mx-2 px-3 my-3">
+                     <button className="fw-bold btn btn-dark mx-2 px-3 my-3" onClick={() => handlePrev()}>
                         Prev
                      </button>
-                     <button className="fw-bold btn btn-dark mx-2 px-3 my-3">
+                     <button className="fw-bold btn btn-dark mx-2 px-3 my-3" onClick={() => handleNext()}>
                         Next
                      </button>
                   </div>

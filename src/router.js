@@ -9,6 +9,7 @@ import ProfileOwner from "./pages/owner/ProfileOwner";
 import DatakontrakanOwner from "./pages/owner/DatakontrakanOwner";
 import KontrakanLocationOwner from "./pages/owner/KontrakanLocation"
 import KontrakanDetailOwner from "./pages/owner/Kontrakandetail"
+import KontrakanPemesananOwner from "./pages/owner/Datapemesanan"
 
 const router = createBrowserRouter([
   // { path: "/", element: <App />, errorElement: <Error /> },
@@ -21,8 +22,9 @@ const router = createBrowserRouter([
   { path: "/dashboardowner", element: <DashboardOwner /> },
   { path: "/profileowner", element: <ProfileOwner /> },
   { path: "/kontrakanowner", element: <DatakontrakanOwner /> },
-  { path: "/kontrakanlocationowner/:id_kontrakan", element: <KontrakanLocationOwner /> },
+  { path: "/kontrakanlocationowner/:id_kontrakan/:kontrakan_location", element: <KontrakanLocationOwner /> },
   { path: "/kontrakandetailowner/:id_location", element: <KontrakanDetailOwner /> },
+  { path: "/kontrakanpemesananOwner", element: <KontrakanPemesananOwner /> },
 ]);
 
 export default router;
