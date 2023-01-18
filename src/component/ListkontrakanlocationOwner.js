@@ -17,6 +17,7 @@ function ListkontrakanOwner(props) {
         <img src={props.image_kontrakan} alt="kontrakan" />
         <p className={css.list_name_kontrakan}>{props.tipe}</p>
         <p className={css.list_tipe}>{props.price}</p>
+        <p className={css.list_status}>{props.status}</p>
         <button className={css.list_action} onClick={kontrakandetailowner}>Preview</button>
         <button className={css.edit_kontrakan} onClick={props.handle_edit}><i className="fa-solid fa-pen-to-square text-dark"></i></button>
         <button className={css.trash} onClick={props.handle_delete}><i className="fa-solid fa-trash"></i></button>

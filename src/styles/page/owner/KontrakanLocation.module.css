@@ -117,11 +117,15 @@
 }
 
 .tipe {
- padding-left: 210px;
+ padding-left: 190px;
+}
+
+.status {
+  padding-left: 110px;
 }
 
 .action {
- padding-left: 280px;  
+ padding-left: 160px;  
 }
 
 

@@ -11,11 +11,13 @@ import css from "../styles/page/Kontrakan.module.css";
 import { SimpleDropdown } from "react-js-dropdavn";
 import "react-js-dropdavn/dist/index.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 
 function Kontrakan() {
 
+   const navigate = useNavigate()
    const [datakontrakan, setDatakontrakan] = useState([])
    const [next, setNext] = useState(null)
    const [prev, setPrev] = useState(null)
@@ -197,7 +199,8 @@ function Kontrakan() {
                      price={costing(e.price)}
                      tipe={e.tipe_kontrakan}
                      image={e.image}
-                     address={e.detail_address}                     
+                     address={e.detail_address}    
+                     handletodetail={() => navigate(`/kontrakan/detail/${e.id}`)}                 
                      />
                   ))}
                   </div>

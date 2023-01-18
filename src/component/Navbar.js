@@ -20,10 +20,7 @@ function Navbar() {
   return (
     <div className='container-fluid'>
       <div className={css.navbar_container}>
-        <div
-          className={css.nav_left}
-          onClick={toBeranda}
-        >
+        <div className={css.nav_left}>
           <img src={logo} alt='Logo-kontrakan' />
           <p>House Privilege</p>
         </div>
@@ -54,7 +51,7 @@ function Navbar() {
             <>
             <div className="d-flex flex-row align-items-center gap-3">
               <p className={css.name_customer}>Hi, Customers </p>
-              <img src={profile.image} alt="image_customer" className="rounded-circle" style={{width:'30px', height:'30px'}} />
+              <img src={profile.image} alt="image_customer" onClick={() => navigate('profileuser')} className="rounded-circle" style={{width:'30px', height:'30px', cursor:'pointer'}} />
             </div>
             </>
           ) : profile.role === "admin" ? (

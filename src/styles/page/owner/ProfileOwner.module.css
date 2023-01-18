@@ -136,6 +136,29 @@
   line-height: 21px; 
 }
 
+.data_profile_1 {
+  width: 100%;
+} 
+
+.data_profile_2 {
+  width: 100%;
+}
+
+.data_profile_2 > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px; 
+}
+.data_profile_1 > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px; 
+}
+
 
 .noted {
   padding-top: 50px;

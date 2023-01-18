@@ -1,6 +1,10 @@
 import React from "react";
 import css from "../styles/component/CardKontrakan.module.css";
+
+
 function CardKontrakan(props) {
+
+
    return (
       <div className={css.container}>
          <div className={css.box}>
@@ -9,7 +13,7 @@ function CardKontrakan(props) {
                className={css.box}
                style={{ "&:first-of-type:before": styles.before }}
             ></span> */}
-            <div className={css.top}>
+            <div className={css.top} onClick={props.handletodetail}>
                <img
                   src={props.image}
                   alt="img_kontrakan"

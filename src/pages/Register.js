@@ -29,6 +29,7 @@ function Register() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [fullname, setFullname] = useState('')
   const [role, setRole] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -56,17 +57,21 @@ function Register() {
   const valueRole = (e) => {
     setRole(e.target.value)    
   }
+  const valueFullname = (e) => {
+    setFullname(e.target.value)
+  }
 
 
   const registerData = async () => {
     try {
       setLoading(true)
-      if(!email || !password || !phoneNumber || !role) return (
+      if(!fullname || !email || !password || !phoneNumber || !role) return (
         toast.error("Data register can't be empty", {
           position: toast.POSITION.TOP_RIGHT,
         }),setLoading(false)
       )
       const response = await RegisterAccount({
+        name: fullname,
         email: email,
         passwords : password,
         phone_number : phoneNumber,
@@ -105,6 +110,10 @@ function Register() {
             <div className={css.content_form}>
               <div className={css.title_announ}>
                 <p className='text-center'>Before you booking please register your data first</p>
+              </div>
+              <div className={css.input_login_fullname}>
+                <label htmlFor="">Fullname</label>
+                <input type="text" placeholder='please input fullname' onChange={valueFullname} />
               </div>
               <div className={css.input_login_email}>
                 <label htmlFor="">Email</label>

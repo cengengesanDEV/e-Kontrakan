@@ -93,9 +93,53 @@ export const patchCategoryKontrakanID = (id, body, token) => {
   });
 };
 
+// Axios patch category by id (page = kontrakan category)
+export const patchLocationKontrakanID = (id, body, token) => {
+  return axios.patch(`${URL}/kontrakan/detail/${id}`, body, {
+    headers: {
+      'x-access-token': token
+    }
+  });
+};
+
 // Axios delete category by id (page = kontrakan category)
 export const deleteCategoryKontrakanID = (id) => {
   return axios.patch(`${URL}/kontrakan/delete/category/${id}`,{});
 };
 
+// Axios delete location by id (page = kontrakan category)
+export const deleteLocationKontrakanID = (id) => {
+  return axios.patch(`${URL}/kontrakan/delete/detail/${id}`,{});
+};
 
+// axios suspend user
+export const suspendUser = (id, token, body) => {
+  return axios.patch(`${URL}/users/delete/${id}`, body, {
+    headers: {
+      "x-access-token" : token
+    }
+  });
+};
+
+// axios unsuspend
+export const UnsuspendUser = (id, token) => {
+  return axios.patch(`${URL}/users/unsuspend/${id}`, {}, {
+    headers: {
+      "x-access-token" : token
+    }
+  });
+};
+
+// get kontrakan by user id in page admin
+export const getkontrakanuserID = (id) => {
+  return axios.get(`${URL}/kontrakan/admin/detail/${id}`);
+};
+
+// axios booking transactions
+export const Bookingtransactions = (token, body) => {
+  return axios.post(`${URL}/transaction`, body, {
+    headers: {
+      "x-access-token" : token
+    }
+  });
+};

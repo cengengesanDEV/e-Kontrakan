@@ -44,6 +44,9 @@
     transform: translateY(-50%);
 } */
 
+.top {
+    cursor: pointer;
+}
 
 .container .box .top {
     position: relative;

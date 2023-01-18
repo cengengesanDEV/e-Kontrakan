@@ -60,6 +60,13 @@ function DatakontrakanOwner() {
     
  ];
 
+  const handleShowadd = () => {
+    (profile.rekening === null) ? toast.error("Please insert no rekening first", {
+        position: toast.POSITION.TOP_RIGHT,
+      })
+     : setShowadd(true)
+  }
+
   useEffect(() => {
     setLoading(true)
     categoryKontrakanGet(profile.id_acc)
@@ -166,8 +173,9 @@ function DatakontrakanOwner() {
         position: toast.POSITION.TOP_RIGHT,
       })
     }
-  
   }
+
+
 
   return (
     <>
@@ -182,7 +190,7 @@ function DatakontrakanOwner() {
               <div className={css.form_kontrakan}>
                 <div className={css.title_kontrakan}>
                   <p>Data Kontrakan</p>  
-                  <button className={css.btn_modal} onClick={() => setShowadd(true)}><i className="fa-solid fa-plus pe-2"></i>Add Kontrakan</button>
+                  <button className={css.btn_modal} onClick={handleShowadd}><i className="fa-solid fa-plus pe-2"></i>Add Kontrakan</button>
                 </div>
                 {/* <hr /> */}
                 <div className={css.table_bar}>
@@ -201,6 +209,7 @@ function DatakontrakanOwner() {
                 : <div className={css.scroll}>
                   {datakontrakan.length !== 0 ? datakontrakan.map((e,index) => (
                     <ListkontrakanOwner
+                     key={index}
                      no={index + 1}
                      id_kontrakan={e.id}
                      image_kontrakan={e.image}

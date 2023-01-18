@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import css from "../../styles/page/owner/Kontrakandetail.module.css"
+import css from "../../styles/page/admin/Datakontrakandetail.module.css"
 import Navbar from "../../component/Navbar"
 import Footer from "../../component/Footer"
 import Sidebarowner from "../../component/Sidebar_owner"
@@ -50,7 +50,7 @@ function Kontrakandetail() {
         <div className="container-fluid">
           <div className={css.container_left_right}>
             {/* container left */}
-            <Sidebarowner page='datakontrakanowner' />
+            <Sidebarowner page='profileadmin' />
             {/* container right */}
             <div className={`container-fluid ${css.container_right}`}>
               <p className={css.title_preview}>Preview Image</p>
@@ -71,7 +71,7 @@ function Kontrakandetail() {
               <p className={css.kontrakan_detail}>Data Kontrakan Detail</p>
               <p className={css.title_kontrakan}>{datakontrakan.kontrakan_name}</p>
               <div className={css.owner_price}>
-                <p>Owner : {profile.fullname}</p>
+                <p>Owner : {datakontrakan.full_name}</p>
                 <div className="d-flex flex-row align-items-center gap-2">
                   <i className="fa-solid fa-money-bill text-danger"></i>
                   <p className='text-danger'>{costing(datakontrakan.price)}</p>

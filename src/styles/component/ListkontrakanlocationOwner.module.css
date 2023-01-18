@@ -45,13 +45,32 @@
 }
 
 .list_tipe {
-  margin-left: 40px;
+  margin-left: 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
   text-align: start;
   height: 80px;
   width: 150px;
+  overflow-x: hidden;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 21px;
+  color: #1a1a1a;
+  padding-right: 10px;
+  
+}
+
+.list_status {
+  margin-left: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: start;
+  height: 80px;
+  width: 50px;
   overflow-x: hidden;
   font-family: 'Arimo';
   font-style: normal;
@@ -79,7 +98,7 @@
 }
 
 .list_action {
-  margin-left: 90px;
+  margin-left: 70px;
   border: none;
   background-color: #1a1a1a;
   border-radius: 10px;

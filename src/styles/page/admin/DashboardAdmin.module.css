@@ -1,0 +1,32 @@
+.container_left_right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container_right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: brown; */
+  justify-content: center;
+  padding: 50px 50px 50px 50px;
+  width: 70%;
+  height: 600px;
+}
+
+.welcome_page > p {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 21px;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.welcome_page > img {
+  width: 100%;
+  height: 250px;
+  padding: 0 100px;
+}

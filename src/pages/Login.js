@@ -73,7 +73,7 @@ function Login() {
               position: toast.POSITION.TOP_RIGHT,
             })
             setTimeout(() => {
-              navigate('/dashboardowner')
+              navigate('/dashboardadmin')
             }, 2000);            
           }else if(response.data.data.role === 'owner'){
             toast.success("Login Success", {

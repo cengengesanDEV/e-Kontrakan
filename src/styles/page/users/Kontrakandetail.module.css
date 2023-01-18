@@ -1,22 +1,5 @@
-.container_left_right {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; 
-}
 
 
-.container_right {
-  display: flex;
-  flex-direction: column;
-  /* align-items: flex-start; */
-  width: 70%;
-  padding: 0 30px 0 30px;
-  padding-top: 50px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  border: 1px solid black;
-  border-radius: 10px;
-}
 
 .title_preview {
   font-family: 'Arimo';
@@ -25,6 +8,7 @@
   font-size: 24px;
   line-height: 21px; 
   padding-bottom: 60px;
+  padding: 50px 80px 50px 80px;
 }
 
 
@@ -33,6 +17,31 @@
   flex-direction: row-reverse;
   justify-content: space-between;
   gap: 10px;
+  padding: 50px 80px 50px 80px;
+}
+
+.container_1 {
+  padding: 0 80px 50px 80px;
+  color: white;
+  background-color: #1a1a1a;
+}
+
+.container_2 {
+  padding: 0 80px 50px 80px;
+  color: #1a1a1a;
+  background-color: #FFF;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* position: relative; */
+}
+
+.house_preview {
+  /* position: absolute; */
+  width: 500px;
+  height: 500px;
+  margin-top: -150px;
+  /* top: 0px; */
 }
 
 .container_preview {
@@ -79,13 +88,13 @@
 
 
 
- .title_kontrakan {
+ /* .title_kontrakan {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 21px;
- }
+ } */
  
 
 
@@ -149,7 +158,7 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 21px;
  }
 
@@ -158,16 +167,17 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 50%;
+  width: 60%;
   padding-top: 20px;
  }
+
 
  .owner_price p {
   font-family: 'Arimo';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
-  line-height: 21px;
+  
  }
 
  .desc {
@@ -206,4 +216,89 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 21px; 
+}
+
+
+
+/* booking */
+.title_start {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 50px;
+  padding-top: 20px;
+}
+
+.check > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.check > input {
+  outline: none;
+  border: none;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+
+.check_1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  padding-top: 20px;
+}
+
+.check_1 > label {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.check_1 > input {
+  outline: none;
+  border: none;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.booking_btn {
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 20px;
+  background-color: #1a1a1a;
+  margin-top: 30px;
+}
+.error_massage {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: red;
+  text-align: center;
+  padding-top: 20px;
+  height: 30px;
 }

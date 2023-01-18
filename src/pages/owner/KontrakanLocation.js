@@ -7,7 +7,7 @@ import Sidebarowner from '../../component/Sidebar_owner'
 import ListkontrakanOwner from '../../component/ListkontrakanlocationOwner'
 import { Modal, Spinner } from 'react-bootstrap'
 import createImage from "../../assets/create.png"
-import { detailKontrakanGet, detailKontrakanadd } from '../../utils/axios'
+import { detailKontrakanGet, detailKontrakanadd, locationDetail,patchLocationKontrakanID , deleteLocationKontrakanID } from '../../utils/axios'
 import { useParams } from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -29,11 +29,23 @@ function KontrakanLocation() {
   const [datakontrakan, setDatakontrakan] = useState([])
   const [loading, setLoading] = useState(false)
 
+  const [idctg ,setIdctg] = useState(null)
+  const [deskripsi, setDeskripsi] = useState(null)
+  const [detail, setdetail] = useState(null)
+  const [name, setName] = useState(null)
+  const [harga, setHarga] = useState(null)
+  const [location, setLocation] = useState(null)
+  const [fasility, setFasility] = useState(null)
+  const [tipe, setTipe] = useState(null)
+  const [imageid, setImageid] = useState([])
+  const [deleteid, setDeleteid] = useState(null)
+  const [imageadd, setImageadd] = useState([])
+  const [deleteimage, setDeleteimage] = useState([])
 
-  const deleteImage = (index) => {
-    setImages(images.filter((image, i) => i !== index));
-  };
 
+
+  // get value all
+  const deleteImage = (index) => {setImages(images.filter((image, i) => i !== index))};
   const valueType_kontrakan = (e) => {setType_kontrakan(e.target.value)}
   const valuePrice = (e) => {setPrice(e.target.value)}
   const valueDesc = (e) => {setDesc(e.target.value)}
@@ -46,6 +58,20 @@ function KontrakanLocation() {
     }
   };
 
+  // get value location id
+  const deleteImageid = (index,images) => {setImageid(imageid.filter((image, i) => i !== index)); setDeleteimage([...deleteimage, images])};
+  const valueType_kontrakanid = (e) => {setTipe(e.target.value)}
+  const valuePriceid = (e) => {setHarga(e.target.value)}
+  const valueDescid = (e) => {setDeskripsi(e.target.value)}
+  const valueFasilitasid = (e) => {
+    const value = e.target.value;
+    if (e.target.checked) {
+      setFasility([...fasility, value]);
+    } else {
+      setFasility(fasility.filter((v) => v !== value));
+    }
+  };
+
 
   const clearState = () => {
     setImages([])
@@ -53,6 +79,11 @@ function KontrakanLocation() {
     setDesc(null)
     setFasilitas([])
     setType_kontrakan(null)
+  }
+
+  const clearStateEdit = () => {
+    setImageadd([])
+    setDeleteimage([])
   }
 
 
@@ -67,7 +98,7 @@ function KontrakanLocation() {
       console.log(err)
       setLoading(false)
     })    
-  }, [])
+  }, [id_kontrakan])
 
   const handleAddLocation = async () => {
     try {
@@ -78,7 +109,7 @@ function KontrakanLocation() {
         formData.append("images", image);
       });
       formData.append('tipe_kontrakan', type_kontrakan)
-      formData.append('fasilitas', (fasilitas))
+      formData.append('fasilitas', fasilitas.join())
       formData.append('price', price)
       formData.append('deskripsi', desc)
       const result = await detailKontrakanadd(formData, getToken)
@@ -101,6 +132,86 @@ function KontrakanLocation() {
     }
   }
 
+  const costing = (price) => {
+    return (
+       "Rp. " +
+       parseFloat(price)
+          .toFixed()
+          .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+    );
+ };
+
+ const handleCategoryID = (id_category_kontrakan) => {
+    setIdctg(id_category_kontrakan)
+    locationDetail(id_category_kontrakan)
+    .then((res) => {
+      console.log(res.data)
+      setDeskripsi(res.data.data.deskripsi)
+      setdetail(res.data.data.detail_address)
+      setName(res.data.data.kontrakan_name)
+      setHarga(res.data.data.price)
+      setLocation(res.data.data.province)
+      setFasility(res.data.data.fasilitas)
+      setTipe(res.data.data.tipe_kontrakan)
+      setImageid(res.data.data.image)
+    
+    })
+
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+  
+
+  const deleteCategory = async () => {
+    try {
+      const result = await deleteLocationKontrakanID(deleteid)
+      const response = await detailKontrakanGet(id_kontrakan)
+      await setDatakontrakan(response.data.data)
+      toast.success(result.data.msg, {
+        position: toast.POSITION.TOP_RIGHT,
+      })
+      setShowdelete(false)
+    } catch (err) {
+      console.log(err)
+      toast.error("Delete Failed", {
+        position: toast.POSITION.TOP_RIGHT,
+      })
+    }
+  }
+
+  const handleEditLocationID = async () => {
+    try {
+      const getToken = await localStorage.getItem('token')
+      const formData = new FormData()
+      if(imageadd.length > 0) imageadd.forEach((image) => {formData.append("images", image)});
+      if(deleteimage.length > 0) formData.append('imageDelete', deleteimage.join())
+      formData.append('tipe_kontrakan', tipe)
+      formData.append('fasilitas', fasility.join())
+      formData.append('price', harga)
+      formData.append('deskripsi', deskripsi)
+      const result = await patchLocationKontrakanID(idctg, formData, getToken)
+      const response = await detailKontrakanGet(id_kontrakan)
+      await setDatakontrakan(response.data.data)
+      toast.success(result.data.msg, {
+        position: toast.POSITION.TOP_RIGHT,
+      })
+      await clearStateEdit()
+      setShowedit(false)
+    } catch (err) {
+      console.log(err)
+      toast.error("Edit Kontrakan Failed", {
+        position: toast.POSITION.TOP_RIGHT,
+      })
+    }
+  }
+
+
+
+
+
+
+
   return (
     <>
       <ToastContainer />
@@ -122,6 +233,7 @@ function KontrakanLocation() {
                   <p className={css.image}>Image</p>
                   <p className={css.name_kontrakan}>Tipe</p>
                   <p className={css.tipe}>Price</p>
+                  <p className={css.status}>Status</p>
                   <p className={css.action}>Detail</p>
                 </div>
                 {/* component */}
@@ -132,13 +244,15 @@ function KontrakanLocation() {
                 : <div className={css.scroll}>
                 {datakontrakan.length !== 0 ? datakontrakan.map((e,index) => (
                     <ListkontrakanOwner
+                     key={index}
                      no={index + 1}
                      id_location={e.id}
                      image_kontrakan={e.image}
-                     price={e.price}
+                     price={costing(e.price)}
                      tipe={e.tipe_kontrakan}
-                     handle_edit={() => setShowedit(true)}
-                     handle_delete={() => setShowdelete(true)}
+                     status={e.status}
+                     handle_edit={() => {setShowedit(true); handleCategoryID(e.id)}}
+                     handle_delete={() => {setShowdelete(true); setDeleteid(e.id)}}
                      
                     />
                   )) : "data kosong"}
@@ -200,7 +314,7 @@ function KontrakanLocation() {
               <input type="checkbox" value='Shower' onChange={valueFasilitas} />
               <input type="checkbox" value='Twin Bed' onChange={valueFasilitas} />
               <input type="checkbox" value='Toilet' onChange={valueFasilitas} />
-              <input type="checkbox" value='Haduk' onChange={valueFasilitas} />
+              <input type="checkbox" value='Handuk' onChange={valueFasilitas} />
               <input type="checkbox" value='Selimut' onChange={valueFasilitas} />
             </div>     
           </div>
@@ -229,7 +343,7 @@ function KontrakanLocation() {
                       <input
                         style={{ display: "none" }}
                         type="file"
-                        id="img-product"
+                        id="img-product"                        
                         onChange={(e) =>
                           setImages([...images, e.target.files[0]])
                         }
@@ -263,15 +377,15 @@ function KontrakanLocation() {
         <div className={css.container_modals}>
           <div className={css.form_type}>
             <label htmlFor="">Type Name Kontrakan</label>
-            <input type="text" value={type_kontrakan} onChange={valueType_kontrakan} placeholder='Please input type name kontrakan' />
+            <input type="text" value={tipe} onChange={valueType_kontrakanid} placeholder='Please input type name kontrakan' />
           </div>
           <div className={css.form_price}>
             <label htmlFor="">Price</label>
-            <input type="text" value={price} onChange={valuePrice} placeholder='Please input address' />
+            <input type="text" value={harga} onChange={valuePriceid} placeholder='Please input address' />
           </div>
           <div className={css.form_desc}>
             <label htmlFor="">Description</label>
-            <input type="text" value={desc} onChange={valueDesc} placeholder='Please input address' />
+            <input type="text" value={deskripsi} onChange={valueDescid} placeholder='Please input address' />
           </div>
           <label className={css.choose_image} htmlFor="">Fasilitas</label>
           <div className={css.form_fasilitas}>
@@ -292,19 +406,19 @@ function KontrakanLocation() {
               <label htmlFor="">:</label>
             </div>
             <div className={`${css.data_profile} d-flex flex-column justify-content-center gap-3`}>
-              <input type="checkbox" value='AC' onChange={valueFasilitas} />
-              <input type="checkbox" value='Shower' onChange={valueFasilitas} />
-              <input type="checkbox" value='Twin Bed' onChange={valueFasilitas} />
-              <input type="checkbox" value='Toilet' onChange={valueFasilitas} />
-              <input type="checkbox" value='Haduk' onChange={valueFasilitas} />
-              <input type="checkbox" value='Selimut' onChange={valueFasilitas} />
+              <input type="checkbox" value='AC' onChange={valueFasilitasid} checked={fasility && fasility.includes('AC') ? true : false} />
+              <input type="checkbox" value='Shower' onChange={valueFasilitasid} checked={fasility && fasility.includes('Shower') ? true : false} />
+              <input type="checkbox" value='Twin Bed' onChange={valueFasilitasid} checked={fasility && fasility.includes('Twin Bed') ? true : false}  />
+              <input type="checkbox" value='Toilet' onChange={valueFasilitasid} checked={fasility && fasility.includes('Toilet') ? true : false} />
+              <input type="checkbox" value='Handuk' onChange={valueFasilitasid} checked={fasility && fasility.includes('Handuk') ? true : false} />
+              <input type="checkbox" value='Selimut' onChange={valueFasilitasid} checked={fasility && fasility.includes('Selimut') ? true : false} />
             </div>     
           </div>
           <p className={css.choose_image}>Choose Image</p>
           <div className={css.container_image}>
-          {images &&
-                  images.length > 0 &&
-                  images.map((image, index) => {
+          {imageid &&
+                  imageid.length > 0 &&
+                  imageid.map((image, index) => {
                     return (
                       <div className="position-relative">
                           <img
@@ -313,13 +427,13 @@ function KontrakanLocation() {
                           height='120'
                           alt=""
                           key={index}
-                          src={URL.createObjectURL(image)}
+                          src={typeof(image) === 'string' ? image : URL.createObjectURL(image)}
                         />
-                        <i onClick={() => deleteImage(index)} className={`fa-solid fa-plus bg-danger ${css.delete_image}`}></i>
+                        <i onClick={() => deleteImageid(index,image)} className={`fa-solid fa-plus bg-danger ${css.delete_image}`}></i>
                       </div>
                     );
                   })}
-                {images.length < 5 && (
+                {imageid.length < 5 && (
                   <label for="img-product">
                     <div className={css["add-photo"]}>
                       <input
@@ -327,7 +441,9 @@ function KontrakanLocation() {
                         type="file"
                         id="img-product"
                         onChange={(e) =>
-                          setImages([...images, e.target.files[0]])
+                          {setImageid([...imageid, e.target.files[0]])
+                           setImageadd([...imageadd ,e.target.files[0]])
+                          console.log([...imageadd ,e.target.files[0]])}
                         }
                       />
                       <img src={createImage} alt="create_image" className={css.image_preview} width='120' height='120' />
@@ -335,14 +451,14 @@ function KontrakanLocation() {
                   </label>
                 )}
           </div>
-          <button className={css.btn_modal_1} onClick={handleAddLocation}>Save Changes</button>
+          <button className={css.btn_modal_1} onClick={handleEditLocationID}>Save Changes</button>
           <button className={css.btn_modal_2} onClick={() => setShowedit(false)}>Cancel</button>
         </div>
         </Modal.Body>
       </Modal>
 
 
-            {/* modal delete kontrakan */}
+      {/* modal delete kontrakan */}
       <Modal
         show={showdelete}
         onHide={() => setShowdelete(false)}
@@ -359,7 +475,7 @@ function KontrakanLocation() {
         <div className='pt-3'>
           <p>Are you sure want to delete this location kontrakan ?</p>
           <div className="pt-3">
-          <button className={css.btn_modal_1}>Save Changes</button>
+          <button className={css.btn_modal_1} onClick={() => deleteCategory()}>Save Changes</button>
           <button className={css.btn_modal_2} onClick={() => setShowdelete(false)}>Cancel</button>
           </div>
         </div>

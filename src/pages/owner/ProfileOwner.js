@@ -29,6 +29,7 @@ function ProfileOwner() {
   const [fullname, setFullname] = useState(profile.fullname)
   const [address, setAddress] = useState(profile.address)
   const [gender, setGender] = useState(profile.gender)
+  const [rek, setRek] = useState(profile.rekening)
   const [location, setLocation] = useState(profile.location)
   const [loading, setLoading] = useState(false)
 
@@ -44,6 +45,7 @@ function ProfileOwner() {
   const valueAddress = (e) => {setAddress(e.target.value)}
   const valueGender = (e) => {setGender(e.target.value)}
   const valueLocation = (e) => {setLocation(e.target.value)}
+  const valueRek = (e) => {setRek(e.target.value)}
 
 
   const handleEditProfile = async () => {
@@ -55,6 +57,7 @@ function ProfileOwner() {
       if(address) formData.append('address', address)
       if(location) formData.append('location', location)
       if(gender) formData.append('gender', gender)
+      if(rek) formData.append('no_rekening',rek)
       if(image) formData.append('image', image)
       const result = await patchProfile(formData, getToken)
       await dispatch(authAction.profileThunk(getToken))
@@ -103,9 +106,10 @@ function ProfileOwner() {
                   <div className="">
                     <p className={css.title_data}>Data Detail</p>
                     <div className={css.box_container}>
-                      <div className={`${css.data_profile} d-flex flex-column justify-content-center gap-2`}>
+                      <div className={`${css.data_profile_1} d-flex flex-column justify-content-center gap-2`}>
                         <label htmlFor="">Name</label>
                         <label htmlFor="">Email</label>
+                        <label htmlFor="">No Rekening</label>
                         <label htmlFor="">Phone number</label>
                         <label htmlFor="">Gender</label>
                         <label htmlFor="">Address</label>
@@ -118,10 +122,12 @@ function ProfileOwner() {
                         <label htmlFor="">:</label>
                         <label htmlFor="">:</label>
                         <label htmlFor="">:</label>
+                        <label htmlFor="">:</label>
                       </div>
-                      <div className={`${css.data_profile} d-flex flex-column justify-content-center gap-2`}>
+                      <div className={`${css.data_profile_2} d-flex flex-column justify-content-center gap-2`}>
                         <label htmlFor="">{profile.fullname === null ? "-" : profile.fullname}</label>
                         <label htmlFor="">{profile.email === null ? "-" : profile.email}</label>
+                        <label htmlFor="">{profile.rekening === null ? "-" : profile.rekening}</label>
                         <label htmlFor="">{profile.phone_number === null ? "-" : profile.phone_number}</label>
                         <label htmlFor="">{profile.gender === null ? "-" : profile.gender}</label>
                         <label htmlFor="">{profile.address === null ? "-" : profile.address}</label>
@@ -171,6 +177,10 @@ function ProfileOwner() {
           <div className={css.form_fullname}>
             <label htmlFor="">Fullname</label>
             <input type="text" value={fullname} name="full_name" id="" placeholder='Please input Fullname' onChange={valueFullname} />
+          </div>
+          <div className={`${css.form_fullname} pt-3`}>
+            <label htmlFor="">No Rekening</label>
+            <input type="number" value={rek} name="full_name" id="" placeholder='Please input no rekening' onChange={valueRek} />
           </div>
           <div className={css.radio_gender}>
             <p className={css.gender_title}>Gender</p>

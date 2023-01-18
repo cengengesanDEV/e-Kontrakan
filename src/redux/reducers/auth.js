@@ -10,13 +10,14 @@ const initialState = {
     email: null,
     phone_number: null,
     fullname: null,
+    rekening: null,
     role: null,
     gender: null,
     location: null,
     address: null,
     image: `https://res.cloudinary.com/derghlznx/image/upload/v1673008181/E-kontrakan/userdefault_upicat.jpg`,
   },
-  product: {
+  rent: {
     id_product: null,
     price: 0,
     name_product: null,
@@ -67,6 +68,7 @@ const authReducer = (prevState = initialState, {type, payload}) => {
           role: payload.data.data[0].role,
           phone_number: payload.data.data[0].phone_number,
           fullname: payload.data.data[0].full_name,
+          rekening: payload.data.data[0].no_rekening,
           gender: payload.data.data[0].gender,
           location: payload.data.data[0].location,
           address: payload.data.data[0].address,
