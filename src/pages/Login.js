@@ -8,8 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import wp_left from "../assets/wp_auth.jpg";
 
 // import component
-import Navbar from "../component/Navbar";
-import Footer from "../component/Footer";
+
 
 // import icon react bawaan
 import { Icon } from "react-icons-kit";
@@ -107,8 +106,7 @@ function Login() {
 
   return (
     <>
-      <ToastContainer />
-      <Navbar />
+      <ToastContainer />      
       <div className=''>
         <div className={css.container_main}>
           <div className={css.content_left}>
@@ -134,7 +132,7 @@ function Login() {
                 </div>
               </div>
               <div className={css.link_register}>
-                <p>Don't have an account? Let's <Link to='/register'>Sign Up</Link></p>
+                <p>Don't have an account? Let's <Link to='/register'>Sign Up</Link> or Back to <Link to="/">Beranda</Link></p>
               </div>
               <div className={css.button_container}>
               {loading ? <div className="d-flex justify-content-center align-items-center pt-3">
@@ -145,7 +143,6 @@ function Login() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

@@ -190,8 +190,8 @@ function Kontrakan() {
                </div>
 
                {/* container right */}
-               <div className={`${css.container_right}`}>
-                  <div className="d-flex flex-row justify-content-start align-items-start flex-wrap">
+               <div className={`${css.container_right} w-100`}>
+                  <div className="d-flex flex-row justify-content-start align-items-start flex-wrap w-100 gap-2 ">
                   {datakontrakan && datakontrakan.map((e,index) => (
                      <CardKontrakan
                      keys={index}

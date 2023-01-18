@@ -1,36 +1,46 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
 
-// props.children => mengakses komponen child
-class PrivateElement extends React.Component {
-    render() {
-        // conditional, jika true semua maka return kan komponen child
-        // jika false, maka redirect
-        // kondisi 1 = apakah sudah login
-        const { allowedRoles = [], children } = this.props;
-        if (!localStorage.token)
+function PrivateElement({children,  allowedRoles}) {
+    
+    const profile = useSelector((state) => state.auth.profile)
+    const getToken = localStorage.getItem('token')
+
+
+    if(!getToken) return (
+        <Navigate 
+            to="/login"
+            replace={true}
+            state={{ msg: "Silahkan Login Terlebih Dahulu", isRedirected: true }}
+        />
+    )
+
+    if(profile.role !== allowedRoles) {
+        if(profile.role === 'admin') {return (
+            <Navigate 
+                to="/dashboardadmin"
+                replace={true}
+                state={{ msg: "Silahkan Login Terlebih Dahulu", isRedirected: true }}
+            />
+        )} else if (profile.role === 'owner') {return (
+            <Navigate 
+                to="/dashboardowner"
+                replace={true}
+                state={{ msg: "Silahkan Login Terlebih Dahulu", isRedirected: true }}
+            />
+        )} else {
             return (
-                <Navigate
+                <Navigate 
                     to="/"
                     replace={true}
                     state={{ msg: "Silahkan Login Terlebih Dahulu", isRedirected: true }}
                 />
-            );
-        // kondisi 2 = apakah sesuai dengan role
-        if (allowedRoles.length > 0)
-            if (!allowedRoles.includes(localStorage.role))
-                return (
-                    <Navigate
-                        to="/"
-                        replace={true}
-                        state={{
-                            msg: "Forbidden",
-                            isRedirected: true,
-                        }}
-                    />
-                );
-        return children;
+            )
+        }
     }
+
+    return children
 }
 
-export default PrivateElement;
+export default PrivateElement
