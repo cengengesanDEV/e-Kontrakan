@@ -103,35 +103,43 @@ function ProfileOwner() {
                   </div>
                 </div>
                 <div className={css.data_detail}>
-                  <div className="">
+                  <div className={css.left}>
                     <p className={css.title_data}>Data Detail</p>
                     <div className={css.box_container}>
-                      <div className={`${css.data_profile_1} d-flex flex-column justify-content-center gap-2`}>
-                        <label htmlFor="">Name</label>
-                        <label htmlFor="">Email</label>
-                        <label htmlFor="">No Rekening</label>
-                        <label htmlFor="">Phone number</label>
-                        <label htmlFor="">Gender</label>
-                        <label htmlFor="">Address</label>
-                        <label htmlFor="">Location</label>
+                      <div>
+                        <span className={css.label}>Name</span>
+                        <span className={css.titik}>:</span>
+                        <span className={css.text}>{profile.fullname === null ? "-" : profile.fullname}</span>
                       </div>
-                      <div className={`${css.data_profile} d-flex flex-column justify-content-center gap-2`}>
-                        <label htmlFor="">:</label>
-                        <label htmlFor="">:</label>
-                        <label htmlFor="">:</label>
-                        <label htmlFor="">:</label>
-                        <label htmlFor="">:</label>
-                        <label htmlFor="">:</label>
-                        <label htmlFor="">:</label>
+                      <div>
+                        <span className={css.label}>Email</span>
+                        <span className={css.titik}>:</span>
+                        <span className={css.text}>{profile.email === null ? "-" : profile.email}</span>
                       </div>
-                      <div className={`${css.data_profile_2} d-flex flex-column justify-content-center gap-2`}>
-                        <label htmlFor="">{profile.fullname === null ? "-" : profile.fullname}</label>
-                        <label htmlFor="">{profile.email === null ? "-" : profile.email}</label>
-                        <label htmlFor="">{profile.rekening === null ? "-" : profile.rekening}</label>
-                        <label htmlFor="">{profile.phone_number === null ? "-" : profile.phone_number}</label>
-                        <label htmlFor="">{profile.gender === null ? "-" : profile.gender}</label>
-                        <label htmlFor="">{profile.address === null ? "-" : profile.address}</label>
-                        <label htmlFor="">{profile.location === null ? "-" : profile.location}</label>
+                      <div>
+                        <span className={css.label}>No Rekening</span>
+                        <span className={css.titik}>:</span>
+                        <span className={css.text}>{profile.rekening === null ? "-" : profile.rekening}</span>
+                      </div>
+                      <div>
+                        <span className={css.label}>Phone number</span>
+                        <span className={css.titik}>:</span>
+                        <span className={css.text}>{profile.phone_number === null ? "-" : profile.phone_number}</span>
+                      </div>
+                      <div>
+                        <span className={css.label}>Gender</span>
+                        <span className={css.titik}>:</span>
+                        <span className={css.text}>{profile.gender === null ? "-" : profile.gender}</span>
+                      </div>
+                      <div>
+                        <span className={css.label}>Address</span>
+                        <span className={css.titik}>:</span>
+                        <span className={css.text}>{profile.address === null ? "-" : profile.address}</span>
+                      </div>
+                      <div>
+                        <span className={css.label}>Location</span>
+                        <span className={css.titik}>:</span>
+                        <span className={css.text}>{profile.location === null ? "-" : profile.location}</span>
                       </div>
                     </div>
                     <div className={css.noted}>
