@@ -199,3 +199,12 @@ export const finishOrder = (id,token) => {
   });
 };
 
+// axios data pemsanan
+export const getHistoryowner = (token, status) => {
+  return axios.get(`${URL}/transaction/${status}`, {
+    headers: {
+      "x-access-token" : token
+    }
+  });
+};
+

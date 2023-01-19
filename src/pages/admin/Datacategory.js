@@ -49,7 +49,7 @@ function Datacategory() {
             {/* container right */}
             <div className={`container-fluid ${css.container_right}`}>
               <p className={css.title_kontrakan}>Data Kontrakan User</p>
-              <div className={`d-flex flex-row justify-content-center pt-4 pb-4 ${css.scroll}`}>
+              <div className={`d-flex flex-row justify-content-start pt-4 pb-4 ${css.scroll}`}>
                 <div className="d-flex flex-row justify-content-start flex-wrap">
                   {datakontrakan.length > 0 ? datakontrakan.map((e, index) => (
                     <CardDetailKontrakanAdmin

@@ -1,0 +1,38 @@
+.container_left_right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+}
+
+
+.container_right {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  width: 70%;
+  padding: 0 30px 0 30px;
+  padding-top: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+
+
+.scroll {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+
+.title_kontrakan {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 21px;
+  padding-bottom: 30px;
+}

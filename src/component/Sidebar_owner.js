@@ -101,7 +101,7 @@ function Sidebar_owner(props) {
               </button>
             ) : null}
             {profile.role === "owner" ? (
-              <button
+              <button onClick={() => navigate("/kontrakanhistoryowner")}
                 className={
                   page === "historyowner" ? css.history_active : css.history
                 }
