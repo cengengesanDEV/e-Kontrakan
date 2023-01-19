@@ -42,7 +42,6 @@ function DatakontrakanOwner() {
   const deleteImage = (index) => {setImages(images.filter((image, i) => i !== index))};
   const valueName_kontrakan = (e) => {setName_kontrakan(e.target.value)}
   const valueAddress = (e) => {setAddress(e.target.value)}
-
   // get value edit
   const valueDetailid = (e) => {setDetailid(e.target.value)}
   const valueNameid = (e) => {setNameid(e.target.value)}

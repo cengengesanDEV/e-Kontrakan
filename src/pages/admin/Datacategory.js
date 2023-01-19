@@ -27,7 +27,7 @@ function Datacategory() {
       console.log(err)
     })
   
-  }, [])
+  }, [id_user])
 
   const costing = (price) => {
     return (

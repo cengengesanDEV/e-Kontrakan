@@ -15,7 +15,6 @@ function Kontrakandetail() {
 
   const { id_kontrakan } = useParams()
   const navigate = useNavigate()
-  const profile = useSelector((state) => state.auth.profile)
 
 
 

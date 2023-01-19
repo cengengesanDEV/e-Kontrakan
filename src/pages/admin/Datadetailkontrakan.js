@@ -8,13 +8,11 @@ import Sidebarowner from "../../component/Sidebar_owner"
 
 import {locationDetail} from "../../utils/axios"
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 
 function Kontrakandetail() {
 
   const { id_location } = useParams()
-  const profile = useSelector((state) => state.auth.profile)
 
   const [image_preview, setImage_preview] = useState([])
   const [fasilitas, setFasilitas] = useState([])
@@ -32,7 +30,7 @@ function Kontrakandetail() {
       .catch((err) => {
         console.log(err)
       })
-  }, [])
+  }, [id_location])
 
   const costing = (price) => {
     return (
