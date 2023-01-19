@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 
 import Navbar from "../../component/Navbar"
 import Footer from "../../component/Footer"
@@ -9,16 +9,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import house from "../../assets/no_bg_house.png"
-import { Profiler } from 'react'
-import { useSelector } from 'react-redux'
-import axios from 'axios'
 
 
 function Kontrakandetail() {
 
   const { id_kontrakan } = useParams()
   const navigate = useNavigate()
-  const profile = useSelector((state) => state.auth.profile)
 
 
 
@@ -28,7 +24,6 @@ function Kontrakandetail() {
   const [datakontrakan, setDatakontrakan] = useState({})
   const [checkin, setCheckin] = useState(null)
   const [checkout, setCheckout] = useState(null)
-  const [total, setTotal] = useState(0)
   const [err, setErr] = useState(true)
 
 
@@ -51,11 +46,6 @@ function Kontrakandetail() {
       '12',
     ];
     const date = new Date();
-    const millisecond = date.getMilliseconds();
-    const detik = date.getSeconds();
-    const menit = date.getMinutes();
-    const jam = date.getHours();
-    const hari = date.getDay();
     const tanggal = date.getDate();
     const bulan = date.getMonth();
     const tahun = date.getFullYear();
@@ -87,6 +77,12 @@ function Kontrakandetail() {
 
   const postBooking = async () => {
     try {
+      const getToken = await localStorage.getItem('token')
+      if(!getToken) return (
+        toast.error("Please Login first", {
+          position: toast.POSITION.TOP_RIGHT,
+        })
+      )
       if(!checkin || !checkout) return (
         toast.error("Please start booking", {
           position: toast.POSITION.TOP_RIGHT,
@@ -94,12 +90,11 @@ function Kontrakandetail() {
       )
       await cek()
       console.log(err)
-      if(cek() === false) return (toast.error("err", {
+      if(cek() === false) return (toast.error("please input date check in or check out correctly", {
         position: toast.POSITION.TOP_RIGHT,
       }))
       await cekPrice()
       const harga = cekPrice() * datakontrakan.price
-      const getToken = await localStorage.getItem('token')
       const result = await Bookingtransactions(getToken,{      
         id_kontrakan: parseInt(id_kontrakan),
         checkin: checkin,
@@ -130,7 +125,7 @@ function Kontrakandetail() {
       .catch((err) => {
         console.log(err)
       })
-  }, [])
+  }, [id_kontrakan])
 
   const costing = (price) => {
     return (

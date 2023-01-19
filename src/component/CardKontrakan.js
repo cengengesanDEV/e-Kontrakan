@@ -65,7 +65,7 @@ function CardKontrakan(props) {
                <div className={css.price}>
                   <span>Dikontrakan</span>
                   <span className="text-success fw-bold fs-6">
-                     {props.price}/years
+                     {props.price}/month
                   </span>
                </div>
             </div>

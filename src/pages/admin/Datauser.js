@@ -54,7 +54,7 @@ function Datauser() {
         position: toast.POSITION.TOP_RIGHT,
       }))
       const getToken = await localStorage.getItem('token')
-      const result = await suspendUser(iduser,getToken,{msg: msg})
+      await suspendUser(iduser,getToken,{msg: msg})
       toast.success("Suspend acc success", {
         position: toast.POSITION.TOP_RIGHT,
       })
@@ -72,7 +72,7 @@ function Datauser() {
     try {
       console.log("unsuspend")
       const getToken = await localStorage.getItem('token')
-      const result = await UnsuspendUser(iduser,getToken)
+      await UnsuspendUser(iduser,getToken)
       toast.success("this acc success Unsuspend", {
         position: toast.POSITION.TOP_RIGHT,
       })

@@ -30,8 +30,6 @@ function Historyuser() {
   const valueSort = (e) => {setSort(e.target.value)}
   const handleImagePreview = (e) => {
     setImage(e.target.files[0])
-    // console.log(typeof(e.target.files[0]))
-    // console.log(e.target.files)
     setDisplay(URL.createObjectURL(e.target.files[0]))
   }
 

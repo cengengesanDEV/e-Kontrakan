@@ -31,10 +31,7 @@ function KontrakanLocation() {
 
   const [idctg ,setIdctg] = useState(null)
   const [deskripsi, setDeskripsi] = useState(null)
-  const [detail, setdetail] = useState(null)
-  const [name, setName] = useState(null)
   const [harga, setHarga] = useState(null)
-  const [location, setLocation] = useState(null)
   const [fasility, setFasility] = useState(null)
   const [tipe, setTipe] = useState(null)
   const [imageid, setImageid] = useState([])
@@ -47,7 +44,6 @@ function KontrakanLocation() {
   // get value all
   const deleteImage = (index) => {setImages(images.filter((image, i) => i !== index))};
   const valueType_kontrakan = (e) => {setType_kontrakan(e.target.value)}
-  const valuePrice = (e) => {setPrice(e.target.value)}
   const valueDesc = (e) => {setDesc(e.target.value)}
   const valueFasilitas = (e) => {
     const value = e.target.value;
@@ -61,7 +57,14 @@ function KontrakanLocation() {
   // get value location id
   const deleteImageid = (index,images) => {setImageid(imageid.filter((image, i) => i !== index)); setDeleteimage([...deleteimage, images])};
   const valueType_kontrakanid = (e) => {setTipe(e.target.value)}
-  const valuePriceid = (e) => {setHarga(e.target.value)}
+  const valueNumber = (e) => {
+    if (e.target.value.length === 0) setPrice("");
+    if (/[0-9]{1,16}/g.test(e.target.value[e.target.value.length - 1])) setPrice(e.target.value);
+  };
+  const valueHarga = (e) => {
+    if (e.target.value.length === 0) setHarga("");
+    if (/[0-9]{1,16}/g.test(e.target.value[e.target.value.length - 1])) setHarga(e.target.value);
+  };
   const valueDescid = (e) => {setDeskripsi(e.target.value)}
   const valueFasilitasid = (e) => {
     const value = e.target.value;
@@ -102,6 +105,20 @@ function KontrakanLocation() {
 
   const handleAddLocation = async () => {
     try {
+      if(!images[0] || !id_kontrakan || !type_kontrakan || !fasilitas[0] || !price || !desc ){
+        return (
+          toast.error("Data kontrakan can't be empty", {
+            position: toast.POSITION.TOP_RIGHT,
+          }),setLoading(false)
+        )
+      }
+      if(price >= 999999999){
+        return (
+          toast.error("the price cannot be above Rp. 999.999.999", {
+            position: toast.POSITION.TOP_RIGHT,
+          }),setLoading(false)
+        )
+      }
       const getToken = localStorage.getItem('token')
       const formData = new FormData()
       formData.append("id_kontrakan", id_kontrakan)
@@ -147,10 +164,7 @@ function KontrakanLocation() {
     .then((res) => {
       console.log(res.data)
       setDeskripsi(res.data.data.deskripsi)
-      setdetail(res.data.data.detail_address)
-      setName(res.data.data.kontrakan_name)
       setHarga(res.data.data.price)
-      setLocation(res.data.data.province)
       setFasility(res.data.data.fasilitas)
       setTipe(res.data.data.tipe_kontrakan)
       setImageid(res.data.data.image)
@@ -284,8 +298,8 @@ function KontrakanLocation() {
             <input type="text" value={type_kontrakan} onChange={valueType_kontrakan} placeholder='Please input type name kontrakan' />
           </div>
           <div className={css.form_price}>
-            <label htmlFor="">Price</label>
-            <input type="text" value={price} onChange={valuePrice} placeholder='Please input address' />
+            <label htmlFor="">Price / month</label>
+            <input type="text" value={price} onChange={valueNumber} placeholder='Please input address' />
           </div>
           <div className={css.form_desc}>
             <label htmlFor="">Description</label>
@@ -380,8 +394,8 @@ function KontrakanLocation() {
             <input type="text" value={tipe} onChange={valueType_kontrakanid} placeholder='Please input type name kontrakan' />
           </div>
           <div className={css.form_price}>
-            <label htmlFor="">Price</label>
-            <input type="text" value={harga} onChange={valuePriceid} placeholder='Please input address' />
+            <label htmlFor="">Price / month</label>
+            <input type="text" value={harga} onChange={valueHarga} placeholder='Please input address' />
           </div>
           <div className={css.form_desc}>
             <label htmlFor="">Description</label>

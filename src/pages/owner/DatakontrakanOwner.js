@@ -42,7 +42,6 @@ function DatakontrakanOwner() {
   const deleteImage = (index) => {setImages(images.filter((image, i) => i !== index))};
   const valueName_kontrakan = (e) => {setName_kontrakan(e.target.value)}
   const valueAddress = (e) => {setAddress(e.target.value)}
-
   // get value edit
   const valueDetailid = (e) => {setDetailid(e.target.value)}
   const valueNameid = (e) => {setNameid(e.target.value)}
@@ -79,7 +78,7 @@ function DatakontrakanOwner() {
       console.log(err)
       setLoading(false)
     })    
-  }, [])
+  }, [profile.id_acc])
 
   const clearState = () => {
     setImages([])
@@ -92,6 +91,13 @@ function DatakontrakanOwner() {
   
   const handleAddCategory = async () => {
     try {
+      if(!images[0] || !name_kontrakan || !province || !address){
+        return (
+          toast.error("Data kontrakan can't be empty", {
+            position: toast.POSITION.TOP_RIGHT,
+          }),setLoading(false)
+        )
+      }
       const getToken = localStorage.getItem('token')
       const formData = new FormData()
       formData.append('image', images[0])
