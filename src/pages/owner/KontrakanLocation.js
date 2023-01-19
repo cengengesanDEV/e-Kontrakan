@@ -31,10 +31,7 @@ function KontrakanLocation() {
 
   const [idctg ,setIdctg] = useState(null)
   const [deskripsi, setDeskripsi] = useState(null)
-  const [detail, setdetail] = useState(null)
-  const [name, setName] = useState(null)
   const [harga, setHarga] = useState(null)
-  const [location, setLocation] = useState(null)
   const [fasility, setFasility] = useState(null)
   const [tipe, setTipe] = useState(null)
   const [imageid, setImageid] = useState([])
@@ -147,10 +144,7 @@ function KontrakanLocation() {
     .then((res) => {
       console.log(res.data)
       setDeskripsi(res.data.data.deskripsi)
-      setdetail(res.data.data.detail_address)
-      setName(res.data.data.kontrakan_name)
       setHarga(res.data.data.price)
-      setLocation(res.data.data.province)
       setFasility(res.data.data.fasilitas)
       setTipe(res.data.data.tipe_kontrakan)
       setImageid(res.data.data.image)

@@ -32,7 +32,7 @@ function Kontrakandetail() {
       .catch((err) => {
         console.log(err)
       })
-  }, [])
+  }, [id_location])
 
   const costing = (price) => {
     return (

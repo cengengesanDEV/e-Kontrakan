@@ -79,7 +79,7 @@ function DatakontrakanOwner() {
       console.log(err)
       setLoading(false)
     })    
-  }, [])
+  }, [profile.id_acc])
 
   const clearState = () => {
     setImages([])
@@ -92,6 +92,13 @@ function DatakontrakanOwner() {
   
   const handleAddCategory = async () => {
     try {
+      if(!images[0] || !name_kontrakan || !province || !address){
+        return (
+          toast.error("Data login can't be empty", {
+            position: toast.POSITION.TOP_RIGHT,
+          }),setLoading(false)
+        )
+      }
       const getToken = localStorage.getItem('token')
       const formData = new FormData()
       formData.append('image', images[0])
