@@ -93,7 +93,7 @@ function DatakontrakanOwner() {
     try {
       if(!images[0] || !name_kontrakan || !province || !address){
         return (
-          toast.error("Data login can't be empty", {
+          toast.error("Data kontrakan can't be empty", {
             position: toast.POSITION.TOP_RIGHT,
           }),setLoading(false)
         )

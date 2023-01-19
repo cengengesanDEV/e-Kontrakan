@@ -77,6 +77,12 @@ function Kontrakandetail() {
 
   const postBooking = async () => {
     try {
+      const getToken = await localStorage.getItem('token')
+      if(!getToken) return (
+        toast.error("Please Login first", {
+          position: toast.POSITION.TOP_RIGHT,
+        })
+      )
       if(!checkin || !checkout) return (
         toast.error("Please start booking", {
           position: toast.POSITION.TOP_RIGHT,
@@ -84,12 +90,11 @@ function Kontrakandetail() {
       )
       await cek()
       console.log(err)
-      if(cek() === false) return (toast.error("err", {
+      if(cek() === false) return (toast.error("please input date check in or check out correctly", {
         position: toast.POSITION.TOP_RIGHT,
       }))
       await cekPrice()
       const harga = cekPrice() * datakontrakan.price
-      const getToken = await localStorage.getItem('token')
       const result = await Bookingtransactions(getToken,{      
         id_kontrakan: parseInt(id_kontrakan),
         checkin: checkin,

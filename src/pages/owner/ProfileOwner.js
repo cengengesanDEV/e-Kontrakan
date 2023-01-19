@@ -45,7 +45,10 @@ function ProfileOwner() {
   const valueAddress = (e) => {setAddress(e.target.value)}
   const valueGender = (e) => {setGender(e.target.value)}
   const valueLocation = (e) => {setLocation(e.target.value)}
-  const valueRek = (e) => {setRek(e.target.value)}
+  const valueNumber = (e) => {
+    if (e.target.value.length === 0) setRek("");
+    if (/[0-9]{1,16}/g.test(e.target.value[e.target.value.length - 1])) setRek(e.target.value);
+  };
 
 
   const handleEditProfile = async () => {
@@ -188,7 +191,14 @@ function ProfileOwner() {
           </div>
           <div className={`${css.form_fullname} pt-3`}>
             <label htmlFor="">No Rekening</label>
-            <input type="number" value={rek} name="full_name" id="" placeholder='Please input no rekening' onChange={valueRek} />
+            <input 
+                  type="tel"
+                  fields={6}
+                  maxLength={16}
+                  pattern="[0-9]{16}"
+                  value={rek}
+                  onChange={valueNumber}
+                  placeholder='please input phone number' />
           </div>
           <div className={css.radio_gender}>
             <p className={css.gender_title}>Gender</p>
