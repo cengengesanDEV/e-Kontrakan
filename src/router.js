@@ -14,7 +14,7 @@ import KontrakanDetailOwner from "./pages/owner/Kontrakandetail"
 import KontrakanPemesananOwner from "./pages/owner/Datapemesanan"
 import KontrakanDetail from "./pages/users/Kontrakandetail"
 import Historyuser from "./pages/users/Historyuser";
-import Paymentuser from "./pages/users/Paymentuser";
+// import Paymentuser from "./pages/users/Paymentuser";
 import ProfileUser from "./pages/users/ProfileUser";
 import HistoryOwner from "./pages/owner/HistoryOwner";
 
@@ -30,9 +30,10 @@ const router = createBrowserRouter([
   { path: "/login", element: <PrivateElementAuth><Login /></PrivateElementAuth>},
   { path: "/kontrakan", element: <Kontrakan /> },
   { path: "/kontrakan/detail/:id_kontrakan", element: <KontrakanDetail /> },
-  { path: "/historyuser", element: <Historyuser /> },
-  { path: "/profileuser", element: <ProfileUser /> },
-  { path: "/payment", element: <Paymentuser /> },
+
+  { path: "/historyuser", element: <PrivateElement allowedRoles='customer'><Historyuser /></PrivateElement> },
+  { path: "/profileuser", element: <PrivateElement allowedRoles='customer'><ProfileUser /></PrivateElement> },
+  // { path: "/payment", element: <PrivateElement allowedRoles='customer'><Paymentuser /></PrivateElement> },
   
   
   { path: "/dashboardowner", element: <PrivateElement allowedRoles='owner'><DashboardOwner /></PrivateElement> },
