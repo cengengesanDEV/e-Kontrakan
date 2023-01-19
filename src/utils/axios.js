@@ -171,3 +171,31 @@ export const deletehistoryuser = (id,token) => {
     }
   });
 };
+
+
+// axios data pemsanan
+export const getPemesanan = (token,body) => {
+  return axios.get(`${URL}/transaction/paid/${body}`, {
+    headers: {
+      "x-access-token" : token
+    }
+  });
+};
+
+// axios change status acc
+export const pemesananACC = (id,token, body) => {
+  return axios.patch(`${URL}/transaction/acc/${id}`, body, {
+    headers: {
+      "x-access-token" : token
+    }
+  });
+};
+
+export const finishOrder = (id,token) => {
+  return axios.patch(`${URL}/transaction/finish/${id}`, {}, {
+    headers: {
+      "x-access-token" : token
+    }
+  });
+};
+
