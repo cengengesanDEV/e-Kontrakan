@@ -143,12 +143,22 @@
 
 .label {
   flex:3;
-  width:100%
+  width:100%;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px; 
 }
 
 .text {
   flex:8;
   width: 2%;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px; 
   word-wrap: break-word;
 }
 
