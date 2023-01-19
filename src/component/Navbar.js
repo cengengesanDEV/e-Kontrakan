@@ -37,8 +37,8 @@ function Navbar() {
           >
             {profile.role === 'admin' || profile.role === 'owner' ? 'Data' : 'Kontrakan' }
           </li>
-          {(profile.role === 'admin') ? null : <><li className={css.li_kontrakan}>
-            Contact US
+          {(profile.role === 'admin') ? null : <><li className={css.li_kontrakan} style={{cursor:'pointer'}} onClick={() => navigate('/historyuser')}>
+            History
           </li>
           <li className={css.li_kontrakan}>
             About
@@ -51,7 +51,7 @@ function Navbar() {
             <>
             <div className="d-flex flex-row align-items-center gap-3">
               <p className={css.name_customer}>Hi, Customers </p>
-              <img src={profile.image} alt="image_customer" onClick={() => navigate('profileuser')} className="rounded-circle" style={{width:'30px', height:'30px', cursor:'pointer'}} />
+              <img src={profile.image} alt="image_customer" onClick={() => navigate('/profileuser')} className="rounded-circle" style={{width:'30px', height:'30px', cursor:'pointer'}} />
             </div>
             </>
           ) : profile.role === "admin" ? (

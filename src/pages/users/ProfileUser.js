@@ -83,42 +83,42 @@ function ProfileUser() {
       <Navbar />
       <main className={css.container}>
         <div className={css.button_container}>
-          <button className={css.button}>Edit password</button>
-          <button className={css.button} onClick={()=> setShowEdit(true)}>Edit profile</button>
+          <button className={css.btn_modal_1}>Edit password</button>
+          <button className={css.btn_modal_1} onClick={()=> setShowEdit(true)}>Edit profile</button>
         </div>
         <side className={css.profile_container}>
           <span className={css.profile_Top}>
             <div>
-              <span className={css.label}>email </span>
+              <span className={css.label}>Email </span>
               <span className={css.titik}>:</span>
               <span className={css.text}>{profile.email}</span>
             </div>
             <div>
-              <span className={css.label}>full name</span>
+              <span className={css.label}>Full name</span>
               <span className={css.titik}>:</span>
               <span className={css.text}>{profile.fullname}</span>
             </div>
             <div>
-              <span className={css.label}>phone number</span>
+              <span className={css.label}>Phone number</span>
               <span className={css.titik}>:</span>
               <span className={css.text}>{profile.phone_number}</span>
             </div>
             <div>
-              <span className={css.label}>location</span>
+              <span className={css.label}>Location</span>
               <span className={css.titik}>:</span>
               <span className={css.text}>
                 {profile.location ? profile.location : "-"}
               </span>
             </div>
             <div>
-              <span className={css.label}>address</span>
+              <span className={css.label}>Address</span>
               <span className={css.titik}>:</span>
               <span className={css.text}>
                 {profile.address ? profile.address : "-"}
               </span>
             </div>
             <div>
-              <span className={css.label}>gender</span>
+              <span className={css.label}>Gender</span>
               <span className={css.titik}>:</span>
               <span className={css.text}>
                 {profile.gender ? profile.gender : "-"}

@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+import PrivateElement from "./component/PrivateElement";
+import PrivateElementAuth from "./component/PrivateElementAuth";
 
 import Register from './pages/Register'
 import Login from './pages/Login'
@@ -23,8 +25,8 @@ import DataDetailKontrakan from "./pages/admin/Datadetailkontrakan"
 const router = createBrowserRouter([
   // { path: "/", element: <App />, errorElement: <Error /> },
   { path: "/", element: <Dashboard /> },
-  { path: "/register", element: <Register /> },
-  { path: "/login", element: <Login /> },
+  { path: "/register", element: <PrivateElementAuth><Register /></PrivateElementAuth> },
+  { path: "/login", element: <PrivateElementAuth><Login /></PrivateElementAuth>},
   { path: "/kontrakan", element: <Kontrakan /> },
   { path: "/kontrakan/detail/:id_kontrakan", element: <KontrakanDetail /> },
   { path: "/historyuser", element: <Historyuser /> },
@@ -32,19 +34,19 @@ const router = createBrowserRouter([
   { path: "/payment", element: <Paymentuser /> },
   
   
-  { path: "/dashboardowner", element: <DashboardOwner /> },
-  { path: "/profileowner", element: <ProfileOwner /> },
-  { path: "/kontrakanowner", element: <DatakontrakanOwner /> },
-  { path: "/kontrakanlocationowner/:id_kontrakan/:kontrakan_location", element: <KontrakanLocationOwner /> },
-  { path: "/kontrakandetailowner/:id_location", element: <KontrakanDetailOwner /> },
-  { path: "/kontrakanpemesananOwner", element: <KontrakanPemesananOwner /> },
+  { path: "/dashboardowner", element: <PrivateElement allowedRoles='owner'><DashboardOwner /></PrivateElement> },
+  { path: "/profileowner", element: <PrivateElement allowedRoles='owner'><ProfileOwner /></PrivateElement> },
+  { path: "/kontrakanowner", element: <PrivateElement allowedRoles='owner'><DatakontrakanOwner /></PrivateElement> },
+  { path: "/kontrakanlocationowner/:id_kontrakan/:kontrakan_location", element: <PrivateElement allowedRoles='owner'><KontrakanLocationOwner /></PrivateElement> },
+  { path: "/kontrakandetailowner/:id_location", element: <PrivateElement allowedRoles='owner'><KontrakanDetailOwner /></PrivateElement> },
+  { path: "/kontrakanpemesananOwner", element: <PrivateElement allowedRoles='owner'><KontrakanPemesananOwner /></PrivateElement> },
 
 
 
-  { path: "/dashboardadmin", element: <DashboardAdmin /> },
-  { path: "/datauseradmin", element: <DatauserAdmin /> },
-  { path: "/datacategoryadmin/:id_user", element: <Datacategory /> },
-  { path: "/datadetailkontrakan/:id_location", element: <DataDetailKontrakan /> },
+  { path: "/dashboardadmin", element: <PrivateElement allowedRoles='admin'><DashboardAdmin /></PrivateElement> },
+  { path: "/datauseradmin", element: <PrivateElement allowedRoles='admin'><DatauserAdmin /></PrivateElement> },
+  { path: "/datacategoryadmin/:id_user", element: <PrivateElement allowedRoles='admin'><Datacategory /></PrivateElement> },
+  { path: "/datadetailkontrakan/:id_location", element: <PrivateElement allowedRoles='admin'><DataDetailKontrakan /></PrivateElement> },
 
 ]);
 

@@ -7,7 +7,7 @@ function CardKontrakan(props) {
 
    return (
       <div className={css.container}>
-         <div className={css.box}>
+         <div className={`${css.box} w-100`}>
             <span className={`${css.area} bg-danger`}>{props.location_top}</span>
             {/* <span
                className={css.box}
@@ -64,7 +64,7 @@ function CardKontrakan(props) {
                </div>
                <div className={css.price}>
                   <span>Dikontrakan</span>
-                  <span className="text-success fw-bold fs-5">
+                  <span className="text-success fw-bold fs-6">
                      {props.price}/years
                   </span>
                </div>

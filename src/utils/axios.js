@@ -143,3 +143,31 @@ export const Bookingtransactions = (token, body) => {
     }
   });
 };
+
+// axios get history
+export const getHistory = (status, token) => {
+  return axios.get(`${URL}/transaction/history/${status}`, {
+    headers: {
+      "x-access-token" : token
+    }
+  });
+};
+
+
+// axios payment
+export const paymentUser = (token, body) => {
+  return axios.patch(`${URL}/transaction/payment`, body, {
+    headers: {
+      "x-access-token" : token
+    }
+  });
+};
+
+// axios history delete
+export const deletehistoryuser = (id,token) => {
+  return axios.patch(`${URL}/transaction/delete/customer/${id}`, {}, {
+    headers: {
+      "x-access-token" : token
+    }
+  });
+};

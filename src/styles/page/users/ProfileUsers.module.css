@@ -52,12 +52,22 @@
 .label {
   flex: 2;
   width: 100%;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px; 
 }
 
 .text {
   flex: 10;
   width: 15%;
   word-wrap: break-word;
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px; 
 }
 
 .image {

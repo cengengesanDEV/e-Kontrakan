@@ -3,7 +3,7 @@ import React, {  useEffect, useState } from 'react'
 import Navbar from "../../component/Navbar"
 import Footer from "../../component/Footer"
 import css from "../../styles/page/users/Kontrakandetail.module.css"
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {locationDetail,Bookingtransactions} from "../../utils/axios"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +14,8 @@ import house from "../../assets/no_bg_house.png"
 function Kontrakandetail() {
 
   const { id_kontrakan } = useParams()
+  const navigate = useNavigate()
+  const profile = useSelector((state) => state.auth.profile)
 
 
 
@@ -99,6 +101,7 @@ function Kontrakandetail() {
       toast.success(result.data.msg, {
         position: toast.POSITION.TOP_RIGHT,
       })
+      navigate("/historyuser")
     } catch (err) {
       console.log(err)
       toast.error("Booking failed", {

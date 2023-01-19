@@ -75,15 +75,15 @@
 }
 
 .tipe {
- padding-left: 82px;
+ padding-left: 50px;
 }
 
 .location {
- padding-left: 120px;
+ padding-left: 95px;
 }
 
 .action {
- padding-left: 150px;  
+ padding-left: 130px;  
 }
 
 
@@ -92,6 +92,7 @@
   flex-direction: column;
   height: 480px;
   overflow-y: scroll;
+  padding-right: 20px;
 }
 
 .btn_modal {

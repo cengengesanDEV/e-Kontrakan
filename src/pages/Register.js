@@ -9,9 +9,6 @@ import css from '../styles/page/Register.module.css'
 // import image
 import wp_left from "../assets/wp_auth.jpg";
 
-// import component
-import Navbar from "../component/Navbar";
-import Footer from "../component/Footer";
 
 // import icon react bawaan
 import { Icon } from "react-icons-kit";
@@ -97,7 +94,7 @@ function Register() {
   return (
     <>
       <ToastContainer />
-      <Navbar />
+      
       <div className=''>
         <div className={css.container_main}>
           <div className={css.content_left}>
@@ -163,7 +160,6 @@ function Register() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   )
 }
