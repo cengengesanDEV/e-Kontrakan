@@ -16,7 +16,7 @@ function HistoryOwner() {
   const [status, setStatus] = useState('pending')
 
   const data = [
-    { label: "Pending", value: "paid" },
+    { label: "Pending", value: "pending" },
     { label: "Paid", value: "paid" },    
     { label: "Process", value: "process" },    
     { label: "Done", value: "done" },    
