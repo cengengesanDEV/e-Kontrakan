@@ -9,6 +9,7 @@ import Footer from "../../component/Footer"
 import Sidebarowner from "../../component/Sidebar_owner"
 import { getPemesanan,pemesananACC, finishOrder } from "../../utils/axios"
 import { Modal } from 'react-bootstrap'
+import Empty from '../../component/Empty';
 
 
 function Datapemesanan() {
@@ -108,7 +109,7 @@ function Datapemesanan() {
                   </div>
                   {e.status_booking === 'paid' ? <button onClick={() => {setId(e.id);setImage(e.image); setShowedit(true)}} className={css.btn_change}>Change Status</button> : <button onClick={() => {handleFinish(e.id)}} className={css.btn_change}>Finish Order</button>}
                 </div>
-              )) : "kosong" }
+              )) : <Empty name='Data' /> }
             </div>
           </div>
         </div>

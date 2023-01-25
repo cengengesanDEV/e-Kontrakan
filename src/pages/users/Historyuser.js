@@ -12,6 +12,7 @@ import default1 from "../../assets/create.png"
 import { paymentUser, deletehistoryuser } from '../../utils/axios'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Empty from '../../component/Empty'
 
 function Historyuser() {
 
@@ -140,7 +141,8 @@ function Historyuser() {
               handlepayment={() => {setShowedit(true); setIdedit(e.id); setName(e.owner); setRek(e.no_rekening)}}
               handledelete={() => {setShowdelete(true); setIddelete(e.id)}}
             />
-          )) : "kosong"}
+          )) : 
+          <Empty name='History' />}
         </div>
       </div>
     <Footer />

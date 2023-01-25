@@ -7,6 +7,7 @@ import CardDetailKontrakanAdmin from '../../component/CardDetailKontrakanAdmin'
 import css from "../../styles/page/admin/Datacategory.module.css"
 import { getkontrakanuserID } from "../../utils/axios"
 import { useNavigate, useParams } from 'react-router-dom'
+import Empty from '../../component/Empty'
 
 
 
@@ -61,7 +62,7 @@ function Datacategory() {
                       location={e.province}
                       handleDetail={() => navigate(`/datadetailkontrakan/${e.id}`)}
                     />
-                  )) : "data kosong"}
+                  )) : <Empty name='Data' />}
                 </div>
               </div>
             </div>

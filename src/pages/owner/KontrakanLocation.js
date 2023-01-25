@@ -11,6 +11,7 @@ import { detailKontrakanGet, detailKontrakanadd, locationDetail,patchLocationKon
 import { useParams } from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Empty from '../../component/Empty'
 
 function KontrakanLocation() {
 
@@ -269,7 +270,7 @@ function KontrakanLocation() {
                      handle_delete={() => {setShowdelete(true); setDeleteid(e.id)}}
                      
                     />
-                  )) : "data kosong"}
+                  )) : <Empty name='Data' />}
                 </div>}
               </div>
             </div>

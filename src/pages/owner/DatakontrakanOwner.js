@@ -14,6 +14,7 @@ import { categoryKontrakanGet, categoryKontrakanadd, getCategoryKontrakanID, pat
 import { useSelector } from 'react-redux'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Empty from '../../component/Empty'
 
 function DatakontrakanOwner() {
 
@@ -226,7 +227,7 @@ function DatakontrakanOwner() {
                      handle_edit={() => {setShowedit(true); handleCategoryID(e.id) }}
                      handle_delete={() => {setShowdelete(true); setDeleteid(e.id)}}
                     />
-                  )) : 'data kosong'}
+                  )) : <Empty name='Data' />}
                 </div>}
               </div>
             </div>

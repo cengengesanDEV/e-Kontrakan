@@ -9,6 +9,7 @@ import css from "../../styles/page/owner/Historyowner.module.css"
 import CardDetailKontrakanAdmin from '../../component/CardDetailKontrakanAdmin';
 import { useState } from 'react';
 import { getHistoryowner } from '../../utils/axios';
+import Empty from '../../component/Empty';
 
 function HistoryOwner() {
 
@@ -77,7 +78,7 @@ function HistoryOwner() {
                         tipe={e.tipe_kontrakan}
                         location={e.payment_method}
                       />
-                    )) : "data kosong"}
+                    )) : <Empty name='Data' />}
                   </div>
                 </div>
             </div>
