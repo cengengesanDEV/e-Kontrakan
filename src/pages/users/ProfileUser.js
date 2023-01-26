@@ -370,7 +370,7 @@ function ProfileUser() {
             <div className={css.form_fullname}>
               <label htmlFor="">Old Password</label>
               <input
-                type="text"
+                type="password"
                 placeholder="Please input old password"
                 value={oldPass}
                 onChange={(e) => setOldPass(e.target.value)}
@@ -379,7 +379,7 @@ function ProfileUser() {
             <div className={css.form_location}>
               <label htmlFor="">New Password</label>
               <input
-                type="text"
+                type="password"
                 placeholder="Please input new password"
                 value={newPass}
                 onChange={(e) => setNewPass(e.target.value)}
@@ -388,7 +388,7 @@ function ProfileUser() {
             <div className={css.form_location}>
               <label htmlFor="">Confirm Password</label>
               <input
-                type="text"
+                type="password"
                 placeholder="Please input confirm password"
                 value={confirmPass}
                 onChange={(e) => setConfimPass(e.target.value)}
