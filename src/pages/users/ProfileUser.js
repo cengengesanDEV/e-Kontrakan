@@ -19,6 +19,7 @@ function ProfileUser() {
 
 
   const [show, setShow] = useState(false);
+  const [showpass, setShowpass] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [display, setDisplay] = useState(profile.image)
   const [image, setImage] = useState(null)
@@ -27,6 +28,9 @@ function ProfileUser() {
   const [gender, setGender] = useState(profile.gender)
   const [location, setLocation] = useState(profile.location)
   const [loading, setLoading] = useState(false)
+  const [newPass, setNewPass] = useState('')
+  const [oldPass, setOldPass] = useState('')
+  const [confirmPass, setConfimPass] = useState('')
 
 
   const handleImagePreview = (e) => {
@@ -77,13 +81,14 @@ function ProfileUser() {
       })
     );
   };
+
   return (
     <>
     <ToastContainer />
       <Navbar />
       <main className={css.container}>
         <div className={css.button_container}>
-          <button className={css.btn_modal_1}>Edit password</button>
+          <button className={css.btn_modal_1} onClick={()=> setShowpass(true)}>Edit password</button>
           <button className={css.btn_modal_1} onClick={()=> setShowEdit(true)}>Edit profile</button>
         </div>
         <side className={css.profile_container}>
@@ -231,6 +236,40 @@ function ProfileUser() {
         </div>
         </Modal.Body>
       </Modal>
+
+      <Modal
+        show={showpass}
+        onHide={() => setShowpass(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="example-custom-modal-styling-title"
+        backdrop='static'
+        centered
+      >
+        <Modal.Header closeButton className={`text-white`} style={{backgroundColor:'#3a3a3a'}}>
+          <Modal.Title id="example-custom-modal-styling-title">
+            Change Password
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div className="w-100">
+          <div className={css.form_fullname}>
+            <label htmlFor="">Old Password</label>
+            <input type="text" placeholder='Please input old password' value={oldPass} onChange={(e) => setOldPass(e.target.value)}/>
+          </div>
+          <div className={css.form_location}>
+            <label htmlFor="">New Password</label>
+            <input type="text" placeholder='Please input new password' value={newPass} onChange={(e) => setNewPass(e.target.value)}/>
+          </div>
+          <div className={css.form_location}>
+            <label htmlFor="">Confirm Password</label>
+            <input type="text" placeholder='Please input confirm password' value={confirmPass} onChange={(e) => setConfimPass(e.target.value)}/>
+          </div>
+          <button className={css.btn_modal_1}>Save Changes</button>
+          <button className={css.btn_modal_2}>Cancel</button>
+        </div>
+        </Modal.Body>
+      </Modal>
+
     </>
   );
 }
