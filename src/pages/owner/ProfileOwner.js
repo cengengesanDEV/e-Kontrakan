@@ -8,7 +8,7 @@ import Footer from "../../component/Footer";
 import Sidebarowner from '../../component/Sidebar_owner';
 
 // axios
-import { patchProfile } from "../../utils/axios"
+import { patchProfile, editPassword } from "../../utils/axios"
 import authAction from '../../redux/actions/auth';
 
 
@@ -32,6 +32,9 @@ function ProfileOwner() {
   const [rek, setRek] = useState(profile.rekening)
   const [location, setLocation] = useState(profile.location)
   const [loading, setLoading] = useState(false)
+  const [oldpass, setOldpass] = useState('')
+  const [newpass, setNewpass] = useState('')
+  const [confirmpass, setConfirmpass] = useState('')
 
 
   const handleImagePreview = (e) => {
@@ -77,6 +80,26 @@ function ProfileOwner() {
         position: toast.POSITION.TOP_RIGHT,
       })
     }
+  }
+
+  const handleEditpass = async () => {
+      try {
+        if(!oldpass || !newpass || !confirmpass) return (
+          toast.error("Input must be fullfilled", {
+            position: toast.POSITION.TOP_RIGHT,
+          })
+        )
+        const getToken = await localStorage.getItem('token')
+        const result = await editPassword(getToken, {oldpass, confirmpass, newpass})
+        toast.success(result.data.msg, {
+          position: toast.POSITION.TOP_RIGHT,
+        })
+        setShowpass(false)
+      } catch (err) {
+        toast.error(err.response.data.msg, {
+          position: toast.POSITION.TOP_RIGHT,
+        })
+      }
   }
 
   
@@ -251,18 +274,18 @@ function ProfileOwner() {
         <div className="w-100">
           <div className={css.form_fullname}>
             <label htmlFor="">Old Password</label>
-            <input type="text" placeholder='Please input old password' />
+            <input type="text" onChange={(e) => setOldpass(e.target.value)} placeholder='Please input old password' />
           </div>
           <div className={css.form_location}>
             <label htmlFor="">New Password</label>
-            <input type="text" placeholder='Please input new password' />
+            <input type="text" onChange={(e) => setNewpass(e.target.value)} placeholder='Please input new password' />
           </div>
           <div className={css.form_location}>
             <label htmlFor="">Confirm Password</label>
-            <input type="text" placeholder='Please input confirm password' />
+            <input type="text" onChange={(e) => setConfirmpass(e.target.value)}placeholder='Please input confirm password' />
           </div>
-          <button className={css.btn_modal_1}>Save Changes</button>
-          <button className={css.btn_modal_2}>Cancel</button>
+          <button className={css.btn_modal_1} onClick={handleEditpass}>Save Changes</button>
+          <button className={css.btn_modal_2} onClick={() => setShowpass(false)}>Cancel</button>
         </div>
         </Modal.Body>
       </Modal>

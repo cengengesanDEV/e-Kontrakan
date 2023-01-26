@@ -13,8 +13,12 @@ import img5 from "../assets/kontrakan5.jpg";
 
 // import css
 import css from '../styles/page/Dashboard.module.css'
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
+
+  const navigate = useNavigate()
+  const toKontrakan = () => navigate("/kontrakan")
 
 
   return (
@@ -44,7 +48,7 @@ function Dashboard() {
             </div>
           </div>
         <div className={css.container_button_start}>
-          <button className={css.start_booking}>Start Booking</button>
+          <button className={css.start_booking} onClick={toKontrakan}>Start Booking</button>
         </div>
         </div>
         <div className="">

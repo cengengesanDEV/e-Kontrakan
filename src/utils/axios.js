@@ -211,7 +211,7 @@ export const getHistoryowner = (token, status) => {
 
 // axios edit password
 export const editPassword = (token, body) => {
-  return axios.get(`${URL}/users/editpass`, body ,{
+  return axios.patch(`${URL}/users/editpass`, body ,{
     headers: {
       "x-access-token" : token
     }
