@@ -53,9 +53,7 @@ function Navbar() {
             </div>
             </>
           ) : profile.role === "admin" ? (
-            <button className={css.button_login}>
-              Logout
-            </button>
+            <div className="px-5"></div>
           ) : (
             <>
               <button
