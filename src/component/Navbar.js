@@ -37,12 +37,10 @@ function Navbar() {
           >
             {profile.role === 'admin' || profile.role === 'owner' ? 'Data' : 'Kontrakan' }
           </li>
-          {(profile.role === 'admin') ? null : <><li className={css.li_kontrakan} style={{cursor:'pointer'}} onClick={() => navigate('/historyuser')}>
+          {(profile.role === 'admin') ? null : (profile.role === 'owner') ? null : <><li className={css.li_kontrakan} style={{cursor:'pointer'}} onClick={() => navigate('/historyuser')}>
             History
           </li>
-          <li className={css.li_kontrakan}>
-            About
-          </li></>}
+          </>}
         </div>
         <div>
           {profile.role === "owner" ? (
