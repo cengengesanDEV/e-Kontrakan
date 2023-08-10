@@ -12,6 +12,7 @@ function CardDetailKontrakanAdmin(props) {
           <div className={css['card-description']}>
             <p className={css['text-title']}>{props.location}</p>
             <p className={css['text-body']}>{props.tipe}</p>
+            <p className={css['text-body']}>{props.ktp}</p>
             <p className={css['text-body']}>{props.price}</p>
             <p className={css['text-body-location']}>{props.desc}</p>
           </div>

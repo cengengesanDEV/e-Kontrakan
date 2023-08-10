@@ -131,6 +131,7 @@ function ProfileUser() {
       await uploadKTP(formData, token)
       await dispatch(authAction.profileThunk(token));
       message.success('Upload success')
+      setShowKTP(false)
       setLoadingKTP(false)
     } catch (error) {
       console.log(error)

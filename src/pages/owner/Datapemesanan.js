@@ -99,12 +99,13 @@ function Datapemesanan() {
               ? pemesanan.map((e, index) => (
                 <div key={index} className="d-flex flex-row justify-content-between align-items-center py-3">
                   <div className="d-flex flex-row gap-3">
-                    <img src={e.image} alt="bukti" width='100' height='100' />
+                    <img src={e.image} alt="bukti" width='100' height='130' />
                     <div className={css.title}>
-                      <p>{e.tipe_kontrakan}</p>
-                      <p>{e.owner}</p>
-                      <p>{(e.order_date).slice(0,10)}</p>
-                      <p>{e.payment_method}</p>
+                      <p>Tipe : {e.tipe_kontrakan}</p>
+                      <p>Nama : {e.customers}</p>
+                      <p>KTP : {e?.no_ktp_customer || ''}</p>
+                      <p>Date : {(e.order_date).slice(0,10)}</p>
+                      <p>Payment : {e.payment_method}</p>
                     </div>
                   </div>
                   {e.status_booking === 'paid' ? <button onClick={() => {setId(e.id);setImage(e.image); setShowedit(true)}} className={css.btn_change}>Change Status</button> : <button onClick={() => {handleFinish(e.id)}} className={css.btn_change}>Finish Order</button>}

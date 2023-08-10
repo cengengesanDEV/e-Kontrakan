@@ -78,6 +78,7 @@ function HistoryOwner() {
                         image={e.image}
                         price={costing(e.total_price)}
                         desc={e.customers}
+                        ktp={e?.no_ktp_customer || ''}
                         tipe={e.tipe_kontrakan}
                         location={e.payment_method}
                       />
