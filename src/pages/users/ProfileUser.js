@@ -128,8 +128,9 @@ function ProfileUser() {
       const formData = new FormData()
       if(image_ktp) formData.append('image_ktp', image_ktp)
       const token = await localStorage.getItem("token");
-      const response = await uploadKTP(formData, token)
-      console.log(response)
+      await uploadKTP(formData, token)
+      await dispatch(authAction.profileThunk(token));
+      message.success('Upload success')
       setLoadingKTP(false)
     } catch (error) {
       console.log(error)
