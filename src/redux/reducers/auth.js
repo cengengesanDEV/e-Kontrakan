@@ -11,10 +11,12 @@ const initialState = {
     phone_number: null,
     fullname: null,
     rekening: null,
+    noKTP:null,
     role: null,
     gender: null,
     location: null,
     address: null,
+    image_ktp : 'https://res.cloudinary.com/derghlznx/image/upload/v1673008181/E-kontrakan/userdefault_upicat.jpg',
     image: `https://res.cloudinary.com/derghlznx/image/upload/v1673008181/E-kontrakan/userdefault_upicat.jpg`,
   },
   rent: {
@@ -73,6 +75,8 @@ const authReducer = (prevState = initialState, {type, payload}) => {
           location: payload.data.data[0].location,
           address: payload.data.data[0].address,
           image: payload.data.data[0].image,
+          noKTP: payload.data.data[0].no_ktp,
+          image_ktp: payload.data.data[0].image_ktp,
         },
       };
 

@@ -48,7 +48,7 @@ function Navbar() {
           ) : profile.role === "customer" ? (
             <>
             <div className="d-flex flex-row align-items-center gap-3">
-              <p className={css.name_customer}>Hi, Customers </p>
+              <p className={css.name_customer}>Hi, {profile.fullname} </p>
               <img src={profile.image} alt="image_customer" onClick={() => navigate('/profileuser')} className="rounded-circle" style={{width:'30px', height:'30px', cursor:'pointer'}} />
             </div>
             </>

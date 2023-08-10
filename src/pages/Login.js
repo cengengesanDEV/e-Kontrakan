@@ -23,6 +23,7 @@ import { Spinner } from "react-bootstrap";
 // import support implementation
 import { LoginAccount } from "../utils/axios";
 import authAction from "../redux/actions/auth";
+import ForgotPassword from "../component/ForgotPassword";
 
 
 function Login() {
@@ -134,6 +135,7 @@ function Login() {
               <div className={css.link_register}>
                 <p>Don't have an account? Let's <Link to='/register'>Sign Up</Link> or Back to <Link to="/">Beranda</Link></p>
               </div>
+              <ForgotPassword />
               <div className={css.button_container}>
               {loading ? <div className="d-flex justify-content-center align-items-center pt-3">
                     <Spinner animation="border" />

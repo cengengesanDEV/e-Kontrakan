@@ -12,6 +12,7 @@ import { SimpleDropdown } from "react-js-dropdavn";
 import "react-js-dropdavn/dist/index.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Button } from "antd";
 
 
 
@@ -21,12 +22,13 @@ function Kontrakan() {
    const [datakontrakan, setDatakontrakan] = useState([])
    const [next, setNext] = useState(null)
    const [prev, setPrev] = useState(null)
+   const [province, setProvince] = useState('')
 
    const data = [
       { label: "Aceh", value: 3 },
       { label: "Bandung", value: 4 },
       { label: "Bali", value: 3 },
-      { label: "DKI Jakarta", value: 1 },
+      { label: "Jakarta", value: 1 },
       { label: "Jawa Barat", value: 2 },
       { label: "Jawa Tengah", value: 3 },
       { label: "Jawa Timur", value: 3 },
@@ -72,7 +74,7 @@ function Kontrakan() {
    }
 
    useEffect(() => {
-     axios.get(`${process.env.REACT_APP_BACKEND_HOST}/kontrakan/?page=1&limit=8`)
+     axios.get(`${process.env.REACT_APP_BACKEND_HOST}/kontrakan/?page=1&limit=8&province=${province}`)
      .then((res) => {
       console.log(res.data)
       setDatakontrakan(res.data.data)
@@ -82,9 +84,10 @@ function Kontrakan() {
      })
      .catch((err) => {
       console.log(err)
+      setDatakontrakan([])
      })
    
-   }, [])
+   }, [province])
    
 
 
@@ -92,7 +95,7 @@ function Kontrakan() {
    return (
       <>
          <Navbar />
-         <div className="container-fluid">
+         <div className="container-fluid py-3">
             <div className={css.container_left_right}>
                {/* container left */}
                <div className={`container-fluid ${css.container_left}`}>
@@ -120,72 +123,14 @@ function Kontrakan() {
                            }}
                            clearable
                            searchable
+                           onChange={(e) => setProvince(e.label)}
                            configs={{ position: { y: "bottom", x: "center" } }}
                         />
                      </div>
 
-                     {/* Sorting Price */}
-                  </div>
-                  <div>
-                     <p className="text-center fw-bold fs-3 mt-3">
-                        Sort prices
-                     </p>
-                     <div className={css.sorting_bar}>
-                        <form className={css.form_kontrakan}>
-                           <input
-                              id="a"
-                              type="radio"
-                              name="sorting"
-                              value="a"
-                              checked
-                           />
-                           <label htmlFor="a">
-                              <span></span>Cheapest
-                           </label>
-                           <input
-                              id="b"
-                              type="radio"
-                              name="sorting"
-                              value="b"
-                           />
-                           <label htmlFor="b">
-                              <span></span>Expensive
-                           </label>
+                     <Button className="my-4" type='primary' onClick={() => setProvince('')}>See all</Button>
 
-                           <div className={css.worm}>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                              <div className={css.worm__segment}></div>
-                           </div>
-                        </form>
-                     </div>
+                     
                   </div>
                </div>
 

@@ -15,6 +15,7 @@ function HistoryOwner() {
 
   const [datakontrakan, setDatakontrakan] = useState([])
   const [status, setStatus] = useState('pending')
+  const [pemasukan, setPemasukan] = useState(0)
 
   const data = [
     { label: "Pending", value: "pending" },
@@ -29,7 +30,8 @@ function HistoryOwner() {
     getHistoryowner(getToken, status)
     .then((res) => {
       console.log(res.data)
-      setDatakontrakan(res.data.data)
+      setDatakontrakan(res.data.data.data)
+      setPemasukan(res.data.data.totalIncome)
     })
     .catch((err) => {
       console.log(err)
@@ -58,6 +60,7 @@ function HistoryOwner() {
             <div className={`container-fluid ${css.container_right}`}>
             <div className="">
                 <p className={css.data_title}>Data History</p>
+                <p>{`Total : ${costing(pemasukan)}`}</p>
                 <div className="py-3">
                 <select className="form-select" data-size='5' aria-label="Default select example" onClick={(e) => {setStatus(e.target.value); console.log(e.target.value)} }>
                   {/* <option selected >Open this select menu</option> */}

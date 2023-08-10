@@ -217,3 +217,21 @@ export const editPassword = (token, body) => {
     }
   });
 };
+
+// forgot password
+export const forgotPassword = (email) => {
+  return axios.patch(`${URL}/users/forgot/${email}`);
+};
+
+// change password forgot
+export const changeforgotPassword = (body) => {
+  return axios.patch(`${URL}/users/changePwd/`,body);
+};
+
+export const uploadKTP = (body ,token) => {
+  return axios.patch(`${URL}/users/ktp`, body, {
+    headers: {
+      'x-access-token' : token
+    }
+  });
+};

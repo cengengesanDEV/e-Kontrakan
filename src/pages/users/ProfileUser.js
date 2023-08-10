@@ -9,13 +9,15 @@ import { useNavigate } from "react-router-dom";
 import authAction from "../../redux/actions/auth";
 import { Modal, Spinner } from "react-bootstrap";
 import { useState } from "react";
-import { patchProfile, editPassword } from "../../utils/axios";
+import { patchProfile, editPassword, uploadKTP } from "../../utils/axios";
 import { toast, ToastContainer } from "react-toastify";
+import { Button, Input, message } from "antd";
 
 function ProfileUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const profile = useSelector((state) => state.auth.profile);
+  
 
   const [show, setShow] = useState(false);
   const [showpass, setShowpass] = useState(false);
@@ -23,6 +25,7 @@ function ProfileUser() {
   const [display, setDisplay] = useState(profile.image);
   const [image, setImage] = useState(null);
   const [fullname, setFullname] = useState(profile.fullname);
+  const [noKTP, setNoKTP] = useState(profile.noKTP)
   const [address, setAddress] = useState(profile.address);
   const [gender, setGender] = useState(profile.gender);
   const [location, setLocation] = useState(profile.location);
@@ -30,6 +33,8 @@ function ProfileUser() {
   const [newPass, setNewPass] = useState("");
   const [oldPass, setOldPass] = useState("");
   const [confirmPass, setConfimPass] = useState("");
+  const [showKTP, setShowKTP] = useState(false)
+  const [image_ktp, setImage_ktp] = useState(null)
 
   const handleImagePreview = (e) => {
     setImage(e.target.files[0]);
@@ -57,6 +62,7 @@ function ProfileUser() {
       const getToken = localStorage.getItem("token");
       const formData = new FormData();
       if (fullname) formData.append("full_name", fullname);
+      if (noKTP) formData.append("no_ktp", noKTP);
       if (address) formData.append("address", address);
       if (location) formData.append("location", location);
       if (gender) formData.append("gender", gender);
@@ -114,12 +120,28 @@ function ProfileUser() {
     }
   };
 
+  const handleUploadKTP = async () => {
+    try {
+      if(!image_ktp) return message.info('please upload ktp')
+      const formData = new FormData()
+      if(image_ktp) formData.append('image_ktp', image_ktp)
+      const token = await localStorage.getItem("token");
+      const response = await uploadKTP(formData, token)
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <ToastContainer />
       <Navbar />
       <main className={css.container}>
         <div className={css.button_container}>
+          <button className={css.btn_modal_1} onClick={() => setShowKTP(true)}>
+            Upload KTP
+          </button>
           <button className={css.btn_modal_1} onClick={() => setShowpass(true)}>
             Edit password
           </button>
@@ -133,6 +155,11 @@ function ProfileUser() {
               <span className={css.label}>Email </span>
               <span className={css.titik}>:</span>
               <span className={css.text}>{profile.email}</span>
+            </div>
+            <div>
+              <span className={css.label}>Nomor KTP </span>
+              <span className={css.titik}>:</span>
+              <span className={css.text}>{profile.noKTP}</span>
             </div>
             <div>
               <span className={css.label}>Full name</span>
@@ -183,6 +210,18 @@ function ProfileUser() {
               </div>
             </div>
           </span>
+          <span className={css.profile_bottom}>
+            <div className={css.card}>
+              <div className="d-flex flex-column align-items-center">
+                <img
+                  src={profile.image_ktp}
+                  alt="images_ktp"
+                  width={'150px'}
+                  height={'150px'}
+                />
+              </div>
+            </div>
+          </span>
         </side>
         <div className="d-flex justify-content-end mb-5">
           <button className={css.logout} onClick={() => setShow(true)}>
@@ -219,6 +258,38 @@ function ProfileUser() {
             </button>
           </div>
         </Modal.Body>
+      </Modal>
+
+      <Modal
+        show={showKTP}
+        onHide={() => setShowKTP(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="example-custom-modal-styling-title"
+        backdrop="static"
+        centered
+      >
+        <Modal.Header
+          closeButton
+          className={`text-white`}
+          style={{ backgroundColor: "#3a3a3a" }}
+        >
+          <Modal.Title id="example-custom-modal-styling-title">
+            Upload KTP
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <input type="file" onChange={(e) => setImage_ktp(e.target.files[0])} />
+        </Modal.Body>
+        <Modal.Footer>
+          <>
+            <Button type="primary" onClick={handleUploadKTP}>
+              Save Changes
+            </Button>
+            <Button type='primary' danger onClick={() => setShowKTP(false)}>
+              Cancel
+            </Button>
+          </>
+        </Modal.Footer>
       </Modal>
 
       <Modal
@@ -267,6 +338,17 @@ function ProfileUser() {
                 id=""
                 placeholder="Please input Fullname"
                 onChange={valueFullname}
+              />
+            </div>
+            <div className={css.form_fullname}>
+              <label htmlFor="">Number KTP</label>
+              <input
+                type="text"
+                value={noKTP}
+                name="full_name"
+                id=""
+                placeholder="Please input number KTP"
+                onChange={(e) => setNoKTP(e.target.value)}
               />
             </div>
             <div className={css.radio_gender}>
@@ -411,6 +493,8 @@ function ProfileUser() {
           </div>
         </Modal.Body>
       </Modal>
+
+      
     </>
   );
 }
