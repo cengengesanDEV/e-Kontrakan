@@ -35,6 +35,7 @@ function ProfileUser() {
   const [confirmPass, setConfimPass] = useState("");
   const [showKTP, setShowKTP] = useState(false)
   const [image_ktp, setImage_ktp] = useState(null)
+  const [loadingKTP, setLoadingKTP] = useState(false)
 
   const handleImagePreview = (e) => {
     setImage(e.target.files[0]);
@@ -122,14 +123,17 @@ function ProfileUser() {
 
   const handleUploadKTP = async () => {
     try {
-      if(!image_ktp) return message.info('please upload ktp')
+      setLoadingKTP(true)
+      if(!image_ktp) return (message.info('please upload ktp'), setLoadingKTP(false))
       const formData = new FormData()
       if(image_ktp) formData.append('image_ktp', image_ktp)
       const token = await localStorage.getItem("token");
       const response = await uploadKTP(formData, token)
       console.log(response)
+      setLoadingKTP(false)
     } catch (error) {
       console.log(error)
+      setLoadingKTP(false)
     }
   }
 
@@ -282,7 +286,7 @@ function ProfileUser() {
         </Modal.Body>
         <Modal.Footer>
           <>
-            <Button type="primary" onClick={handleUploadKTP}>
+            <Button type="primary" loading={loadingKTP} onClick={handleUploadKTP}>
               Save Changes
             </Button>
             <Button type='primary' danger onClick={() => setShowKTP(false)}>
