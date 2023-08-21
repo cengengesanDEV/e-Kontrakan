@@ -41,12 +41,16 @@ function Historyuser() {
     const getToken = localStorage.getItem('token')
     getHistory(sort,getToken)
     .then((res) => {
-      if(res.data.data.length !== length) {setHistory(res.data.data); message.info('Berhasil di perbarui')}
-      setHistory(res.data.data)
-      setLength(res.data.data.length)
-      setTimeout(() => {
-        setDeps(deps + 1)
-      }, 10000);
+      if(sort == 'process'){
+        if(res.data.data.length !== length) {setHistory(res.data.data); message.info('Pembayaran success')}
+        setHistory(res.data.data)
+        setLength(res.data.data.length)
+        setTimeout(() => {
+          setDeps(deps + 1)
+        }, 10000);
+      }else{
+        setHistory(res.data.data)
+      }
     })
     .catch((err) => {console.log(err)})
   }, [sort, deps])
