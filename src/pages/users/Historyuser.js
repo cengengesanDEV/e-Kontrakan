@@ -13,6 +13,7 @@ import { paymentUser, deletehistoryuser } from '../../utils/axios'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Empty from '../../component/Empty'
+import { message } from 'antd'
 
 function Historyuser() {
 
@@ -27,6 +28,8 @@ function Historyuser() {
   const [bank, setBank] = useState(null)
   const [image, setImage] = useState(null)
   const [display, setDisplay] = useState(default1)
+  const [deps, setDeps] = useState(null)
+  const [length, setLength] = useState(0)
 
   const valueSort = (e) => {setSort(e.target.value)}
   const handleImagePreview = (e) => {
@@ -37,9 +40,16 @@ function Historyuser() {
   useEffect(() => {
     const getToken = localStorage.getItem('token')
     getHistory(sort,getToken)
-    .then((res) => {console.log(res.data.data); setHistory(res.data.data)})
+    .then((res) => {
+      if(res.data.data.length !== length) {setHistory(res.data.data); message.info('Berhasil di perbarui')}
+      setHistory(res.data.data)
+      setLength(res.data.data.length)
+      setTimeout(() => {
+        setDeps(deps + 1)
+      }, 10000);
+    })
     .catch((err) => {console.log(err)})
-  }, [sort])
+  }, [sort, deps])
 
   const data = [
     { label: "BCA", value: "BCA" },
@@ -51,7 +61,7 @@ function Historyuser() {
 
   const handlePayment = async () => {
     try {
-      if(!image || !bank) return console.log("kosong")
+      if(!image || !bank) return message.info('please input again')
       const getToken = await localStorage.getItem("token")
       const formData = new FormData()
       formData.append('payment_method', bank)

@@ -44,7 +44,7 @@ function Navbar() {
         </div>
         <div>
           {profile.role === "owner" ? (
-            <div className="px-5"></div>
+            <div className={`${css.name_customer}`}>Hi, {profile.fullname} </div>
           ) : profile.role === "customer" ? (
             <>
             <div className="d-flex flex-row align-items-center gap-3">
@@ -53,7 +53,7 @@ function Navbar() {
             </div>
             </>
           ) : profile.role === "admin" ? (
-            <div className="px-5"></div>
+            <div className={`${css.name_customer}`}>Hi, {profile.fullname} </div>
           ) : (
             <>
               <button

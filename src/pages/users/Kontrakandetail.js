@@ -9,6 +9,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import house from "../../assets/no_bg_house.png"
+import { message } from 'antd'
+import { useSelector } from 'react-redux'
 
 
 function Kontrakandetail() {
@@ -16,6 +18,7 @@ function Kontrakandetail() {
   const { id_kontrakan } = useParams()
   const navigate = useNavigate()
 
+  const profile = useSelector(state => state.auth.profile)
 
 
   const [image_preview, setImage_preview] = useState([])
@@ -95,6 +98,9 @@ function Kontrakandetail() {
       }))
       await cekPrice()
       const harga = cekPrice() * datakontrakan.price
+
+      if(!profile.noKTP) return (message.info('please insert nomor ktp'), navigate('/profileuser'))
+
       const result = await Bookingtransactions(getToken,{      
         id_kontrakan: parseInt(id_kontrakan),
         checkin: checkin,
